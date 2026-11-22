@@ -22,6 +22,13 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Select GitHub Actions as the Pages source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh api --method PUT "repos/${GITHUB_REPOSITORY}/pages" -f build_type=workflow --silent; then
+            echo "::warning::Select Settings > Pages > Source > GitHub Actions to prevent the legacy branch deployment from overwriting this site."
+          fi
       - run: npm ci
       - run: npm run build
         env:
