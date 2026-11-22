@@ -259,7 +259,7 @@ em {
 }
 .hero-intro {
   font:
-    9px/1.6 "Inter",
+    15px/1.6 "Inter",
     sans-serif;
   letter-spacing: 2px;
   color: #a8a8ac;
@@ -2501,7 +2501,7 @@ em {
     padding: 6px 9px;
   }
   .hero-intro {
-    font-size: 8px;
+    font-size: 12px;
     letter-spacing: 1.6px;
   }
   .hero-location {
