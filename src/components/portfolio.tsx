@@ -193,7 +193,12 @@ export default function Portfolio() {
                 </a>
               ))}
             </div>
-            <a href={profile.resume} className="resume-button" download>
+            <a
+              href={profile.resume}
+              className="resume-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Résumé <ArrowDownToLine size={14} />
             </a>
             <button
@@ -240,8 +245,13 @@ export default function Portfolio() {
                 <a href="#work" className="button primary">
                   Explore my work <ArrowUpRight size={16} />
                 </a>
-                <a href={profile.resume} className="button secondary" download>
-                  <ArrowDownToLine size={15} /> Download résumé
+                <a
+                  href={profile.resume}
+                  className="button secondary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ArrowDownToLine size={15} /> View résumé
                 </a>
               </div>
               <div className="pillar-links">
@@ -441,7 +451,12 @@ export default function Portfolio() {
                   I like clear interfaces, grounded reasoning, and systems you
                   can trust when the stakes are real.
                 </p>
-                <a href={profile.resume} download className="inline-link">
+                <a
+                  href={profile.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-link"
+                >
                   The longer story, in my résumé <ArrowUpRight size={14} />
                 </a>
               </article>
@@ -909,7 +924,11 @@ export default function Portfolio() {
                   LinkedIn
                   <ArrowUpRight size={13} />
                 </a>
-                <a href={profile.resume} download>
+                <a
+                  href={profile.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <ArrowDownToLine size={16} />
                   Résumé
                 </a>

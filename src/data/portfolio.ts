@@ -31,7 +31,8 @@ export const profile = {
   email: "patelkchetana@gmail.com",
   github: "https://github.com/chetsp",
   linkedin: "https://www.linkedin.com/in/cschetanapatel/",
-  resume: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/Chetana_Patel_Resume.pdf`,
+  resume:
+    "https://drive.google.com/file/d/1QKwLcst_WOcJED3Td2-cdrqP0Czb_tDL/view?usp=sharing",
 };
 export const categories: Category[] = [
   "All work",

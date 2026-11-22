@@ -92,13 +92,15 @@ const base = process.env.BASE_URL || "http://127.0.0.1:3000";
   await page.getByRole("dialog").waitFor({ state: "detached" });
   assert.equal(await page.getByRole("dialog").count(), 0);
   assert.match(await page.locator(":focus").innerText(), /Ask my portfolio/);
-  const downloadPromise = page.waitForEvent("download");
-  await page.locator(".resume-button").click();
-  const download = await downloadPromise;
-  assert.equal(download.suggestedFilename(), "Chetana_Patel_Resume.pdf");
-  const pdf = await page.request.get(base + "/Chetana_Patel_Resume.pdf");
-  assert.equal(pdf.status(), 200);
-  assert.equal((await pdf.body()).subarray(0, 5).toString(), "%PDF-");
+  const resumeLinks = page.locator(
+    'a[href="https://drive.google.com/file/d/1QKwLcst_WOcJED3Td2-cdrqP0Czb_tDL/view?usp=sharing"]',
+  );
+  assert.equal(await resumeLinks.count(), 4);
+  for (const link of await resumeLinks.all()) {
+    assert.equal(await link.getAttribute("target"), "_blank");
+    assert.match(await link.getAttribute("rel"), /noopener/);
+    assert.equal(await link.getAttribute("download"), null);
+  }
   assert.equal(
     await page
       .locator('a[href="https://www.linkedin.com/in/cschetanapatel/"]')

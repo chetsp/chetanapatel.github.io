@@ -73,3 +73,7 @@ GITHUB_PAGES=true npm run build
 ```
 
 The `out/` folder contains the static site. The repository subpath is configured in `next.config.ts`; update the workflow's `NEXT_PUBLIC_BASE_PATH` if the repository name changes. Normal `npm run build` retains server-side chat support.
+
+## Current résumé link
+
+All résumé buttons use the Google Drive URL in `profile.resume` in `src/data/portfolio.ts` and open it in a new tab. To replace the résumé, update the document in Drive or change this centralized URL. Set Drive access to **Anyone with the link → Viewer** so visitors can open and download it without signing in. The PDF in `public/` is retained as a legacy local copy.

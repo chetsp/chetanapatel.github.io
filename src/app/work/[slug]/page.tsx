@@ -32,7 +32,7 @@ export default async function CaseStudy({
         <Link href="/#work">
           <ArrowLeft size={14} /> All work
         </Link>
-        <a href={profile.resume} download>
+        <a href={profile.resume} target="_blank" rel="noopener noreferrer">
           Résumé ↓
         </a>
       </header>
