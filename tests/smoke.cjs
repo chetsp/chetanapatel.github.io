@@ -82,11 +82,7 @@ const staticSite = process.env.STATIC_SITE === "true";
   await checkInternalLinks();
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(base);
-  await page
-    .getByRole("combobox", { name: "Choose a guided tour" })
-    .selectOption("Technical Peer");
-  await page.getByRole("link", { name: "Start selected tour" }).click();
-  assert.equal(new URL(page.url()).hash, "#work");
+  assert.equal(await page.locator(".tour-bar").count(), 0);
   await page
     .getByRole("button", { name: "Agents & MCP", exact: true })
     .last()
@@ -233,7 +229,7 @@ const staticSite = process.env.STATIC_SITE === "true";
     `PASS ${checkedLinks.size} internal routes and assets resolved without errors`,
   );
   console.log(
-    "PASS tour, filters, expanded timeline, metric anchors, visible skills, chat, keyboard drawer, download, social URL, 404, mobile navigation, no JS errors",
+    "PASS filters, expanded timeline, metric anchors, visible skills, chat, keyboard drawer, download, social URL, 404, mobile navigation, no JS errors",
   );
   console.log(
     staticSite

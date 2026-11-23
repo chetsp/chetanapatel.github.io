@@ -8,7 +8,6 @@ import {
   ArrowUpRight,
   Braces,
   Check,
-  ChevronDown,
   Code2,
   Copy,
   Database,
@@ -30,27 +29,8 @@ import {
   skillGroups,
 } from "@/data/portfolio";
 import Assistant from "./assistant";
+import ThemeToggle from "./theme-toggle";
 import ExperienceTimeline from "./experience-timeline";
-type Tour =
-  "Explore freely" | "Recruiter" | "Engineering Manager" | "Technical Peer";
-const tours: Record<Tour, { text: string; target: string }> = {
-  "Explore freely": {
-    text: "Browse experience, projects, and technical details.",
-    target: "about",
-  },
-  Recruiter: {
-    text: "Start with impact, experience, and the résumé.",
-    target: "bank-of-america-senior",
-  },
-  "Engineering Manager": {
-    text: "Explore system ownership and engineering decisions.",
-    target: "work",
-  },
-  "Technical Peer": {
-    text: "Go deeper into architecture, trade-offs, and code.",
-    target: "work",
-  },
-};
 const nav = ["About", "Experience", "Work", "Skills", "Assistant", "Contact"];
 function SectionTitle({
   number,
@@ -94,7 +74,6 @@ function Reveal({
 }
 export default function Portfolio() {
   const [menu, setMenu] = useState(false);
-  const [tour, setTour] = useState<Tour>("Explore freely");
   const [filter, setFilter] = useState<Category>("All work");
   const [skill, setSkill] = useState("");
   const [copied, setCopied] = useState(false);
@@ -167,7 +146,7 @@ export default function Portfolio() {
   }
   return (
     <MotionConfig reducedMotion="user">
-      <div className="site" data-tour={tour}>
+      <div className="site">
         <header className="nav-shell">
           <nav className="navbar" aria-label="Main navigation">
             <a href="#" className="brand">
@@ -193,6 +172,7 @@ export default function Portfolio() {
             <a href={profile.resume} className="resume-button" download>
               Résumé <ArrowDownToLine size={14} />
             </a>
+            <ThemeToggle />
             <button
               className="menu-toggle"
               aria-label={menu ? "Close navigation" : "Open navigation"}
@@ -309,35 +289,6 @@ export default function Portfolio() {
                 </div>
                 <i />
               </div>
-            </div>
-            <div className="tour-bar">
-              <div className="tour-icon">
-                <Network size={19} />
-              </div>
-              <div className="tour-label">
-                <strong>Choose a reading focus</strong>
-                <span>{tours[tour].text}</span>
-              </div>
-              <label className="tour-select">
-                <span>Which tour?</span>
-                <select
-                  aria-label="Choose a guided tour"
-                  value={tour}
-                  onChange={(e) => setTour(e.target.value as Tour)}
-                >
-                  {Object.keys(tours).map((t) => (
-                    <option key={t}>{t}</option>
-                  ))}
-                </select>
-                <ChevronDown size={14} />
-              </label>
-              <a
-                href={`#${tours[tour].target}`}
-                className="tour-go"
-                aria-label="Start selected tour"
-              >
-                <ArrowRight size={18} />
-              </a>
             </div>
             <div className="metrics">
               {[
@@ -507,16 +458,6 @@ export default function Portfolio() {
                   </button>
                 ))}
               </div>
-              {tour !== "Explore freely" && (
-                <p className="tour-hint">
-                  <Sparkles size={12} />{" "}
-                  {tour === "Recruiter"
-                    ? "Recruiter lens: impact, scope, and a clear connection to real code."
-                    : tour === "Engineering Manager"
-                      ? "Engineering manager lens: open a case study for ownership, decisions, and boundaries."
-                      : "Technical peer lens: follow the pipeline, inspect the trade-offs, and explore the source."}
-                </p>
-              )}
             </Reveal>
             <motion.div layout className="project-grid">
               <AnimatePresence mode="popLayout">

@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "test:smoke": "node tests/smoke.cjs",
     "format": "prettier --write src tests README.md",
-    "lint": "eslint src next.config.ts --max-warnings=0"
+    "lint": "eslint src next.config.ts --max-warnings=0",
+    "test:themes": "node tests/themes.cjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.0",
@@ -17,6 +18,7 @@
     "framer-motion": "^12.0.0",
     "lucide-react": "^0.468.0",
     "next": "^16.0.0",
+    "next-themes": "^0.4.6",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemeToggle from "@/components/theme-toggle";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
 import { projects, profile } from "@/data/portfolio";
@@ -32,9 +33,12 @@ export default async function CaseStudy({
         <Link href="/#work">
           <ArrowLeft size={14} /> All work
         </Link>
-        <a href={profile.resume} download>
-          Résumé ↓
-        </a>
+        <div className="case-actions">
+          <a href={profile.resume} download>
+            Résumé ↓
+          </a>
+          <ThemeToggle />
+        </div>
       </header>
       <main id="main" className={`case-main wrap ${p.color}`}>
         <Link href="/#work" className="inline-link">

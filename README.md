@@ -57,7 +57,7 @@ npx playwright install chromium
 npm run test:smoke
 ```
 
-For an existing system Chromium, use `CHROMIUM_PATH=/usr/bin/chromium npm run test:smoke`. `BASE_URL` overrides the default test server URL of `http://127.0.0.1:3000`. The smoke test covers five viewport sizes, reduced-motion visibility, anchors, tour selection, project filtering, expanded experience and metric anchors, skills, assistant replies, drawer keyboard behavior, PDF downloads, social links, case studies, validation errors, unknown routes, and mobile navigation. The local-mode checks expect the server to be running without a Gemini key.
+For an existing system Chromium, use `CHROMIUM_PATH=/usr/bin/chromium npm run test:smoke`. `BASE_URL` overrides the default test server URL of `http://127.0.0.1:3000`. The smoke test covers five viewport sizes, reduced-motion visibility, anchors, project filtering, expanded experience and metric anchors, skills, assistant replies, drawer keyboard behavior, PDF downloads, social links, case studies, validation errors, unknown routes, and mobile navigation. The local-mode checks expect the server to be running without a Gemini key.
 
 ## GitHub Pages deployment
 
@@ -80,3 +80,11 @@ The `out/` folder contains the static site. The repository subpath is configured
 All résumé buttons use `profile.resume` in `src/data/portfolio.ts`. The URL includes the GitHub Pages base path and points to `public/Chetana_Patel_Resume.pdf`. Replace that PDF with the same filename to update every download. The latest uploaded résumé is used as the canonical download.
 
 For the exported GitHub Pages site, run the smoke test with `STATIC_SITE=true` and `BASE_URL` set to the served repository subpath. Server API checks are skipped for that static build; local assistant interactions and asset links are still checked.
+
+## Light and dark themes
+
+The navigation toggle (also present on case study pages) uses `next-themes` with a class on `<html>`, a dark default, and system preference disabled. The selection is persisted in localStorage. The provider’s inline script applies a saved theme before hydration. Icons are selected with CSS so they match the pre-paint theme without a mounted-state delay.
+
+All component colors use the dark `:root` and light `:root.light` tokens in `src/app/globals.css`. Light mode uses white page backgrounds, off-white cards, dark zinc text, and darker green accents for readable buttons and links.
+
+With the app running, execute `npm run test:themes` (with `BASE_URL` and optionally `CHROMIUM_PATH` as described above). Tests check both themes across four screen sizes, all case studies, the chat drawer, text/surface contrast, persistence, keyboard activation, and a saved light theme with hydration bundles blocked.

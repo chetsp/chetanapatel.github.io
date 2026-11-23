@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ThemeProvider from "@/components/theme-provider";
 import { profile } from "@/data/portfolio";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
@@ -23,12 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body>
-        <a className="skip-link" href="#main">
-          Skip to content
-        </a>
-        {children}
+        <ThemeProvider>
+          <a className="skip-link" href="#main">
+            Skip to content
+          </a>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
