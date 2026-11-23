@@ -91,10 +91,8 @@ With the app running, execute `npm run test:themes` (with `BASE_URL` and optiona
 
 ## Tools, Skills & Capabilities
 
-`src/data/portfolio.ts` owns the capability pillars, tool identities, experience badges, and explicit proof links. `src/components/capabilities.tsx` renders the interactive two-tier layer; `capability-diagram.tsx` contains the schematic SVG graphics. Python is selected by default. Capability cards filter the tool grid; selecting, focusing, or hovering a tile updates the proof panel.
+`src/data/portfolio.ts` owns the four capability pillars and 33 tools/practices. `src/components/capabilities.tsx` renders the architecture cards and names/icons-only grid. Capability cards filter the grid; there are no usage badges, proof drawers, or tool-selection interactions.
 
-The proof mapping distinguishes production roles, project implementations, academic deployments, and exploration. It does not imply that every listed tool was used in production. The survey application's repository can be referenced for Kubernetes/Helm/MySQL evidence without restoring its removed featured-project card.
+Original-color technology SVGs are local in `public/tools/`, with source details in `public/tools/SOURCES.md`. White icon surfaces keep both full-color and monochrome brand marks visible in dark and light themes. Codex and Gemini each appear once. Internal tool context remains available to the portfolio assistant.
 
-Technology SVG marks are local in `public/tools/`, with source details in `public/tools/SOURCES.md`. Monochrome marks invert in dark mode. Generic practices (RAG, evaluations, scheduling, and SQL) use Lucide symbols rather than invented brand logos. The Pydantic and Google owner marks identify PydanticAI and Google ADK respectively.
-
-Run `npm run test:capabilities` against a running server or static preview (`BASE_URL` and `CHROMIUM_PATH` work as for the other browser suites). It checks all 32 proof mappings, 4 capability filters, hover/focus behavior, local icons, organization-logo badges, internal proof links, and both themes across five viewport sizes.
+Run `npm run test:capabilities` with `BASE_URL` and optionally `CHROMIUM_PATH`. It checks the tool count, filters, Codex/Gemini, absence of usage details, unfiltered brand colors, local SVG URLs, footer cleanup, and both themes at desktop/mobile widths.

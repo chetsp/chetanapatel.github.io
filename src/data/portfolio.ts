@@ -234,6 +234,15 @@ export type Capability = {
 };
 export const tools: Tool[] = [
   {
+    id: "codex",
+    name: "Codex",
+    pillar: "agents",
+    logo: "codex",
+    badge: "Developer tooling",
+    summary: "AI-assisted software development and code review.",
+    proof: [],
+  },
+  {
     id: "gemini",
     name: "Gemini",
     pillar: "agents",
@@ -865,6 +874,7 @@ export const capabilities: Capability[] = [
       "Typed extraction, stateful orchestration, retrieval, and review boundaries.",
     diagram: "agents",
     toolIds: [
+      "codex",
       "gemini",
       "claude",
       "langgraph",

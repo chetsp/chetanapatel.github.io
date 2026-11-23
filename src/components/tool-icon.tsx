@@ -18,13 +18,13 @@ export default function ToolIcon({
           : Database;
   return (
     <span
-      className={`tool-mark ${compact ? "tool-mark-compact" : ""}`}
+      className={`tool-mark ${compact ? "tool-mark-compact" : ""} ${tool.logo ? "tool-mark-brand" : ""}`}
       aria-hidden="true"
     >
       {tool.logo ? (
         <Image
           className="tool-brand-svg"
-          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/tools/${tool.logo}.svg`}
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/tools/${tool.logo}.svg?v=brand-color`}
           width={28}
           height={28}
           alt=""

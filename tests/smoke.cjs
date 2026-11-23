@@ -139,11 +139,25 @@ const staticSite = process.env.STATIC_SITE === "true";
     await page.locator("#bank-of-america-senior").innerText(),
     /\$800K annual infrastructure savings/,
   );
-  assert.equal(await page.locator("#skills .tool-tile").count(), 32);
+  assert.equal(await page.locator("#skills .tool-tile").count(), 33);
   for (const badge of await page.locator("#skills .tool-tile").all())
     assert(await badge.isVisible());
-  await page.getByRole("button", { name: "LangGraph", exact: true }).click();
-  assert.match(await page.locator("#skills-proof").innerText(), /RouteMind/);
+  assert.equal(await page.locator("#skills-proof").count(), 0);
+  assert.equal(await page.locator("#skills .tool-experience").count(), 0);
+  assert.equal(
+    await page
+      .locator("#skills .tool-tile")
+      .filter({ hasText: "Codex" })
+      .count(),
+    1,
+  );
+  assert.equal(
+    await page
+      .locator("#skills .tool-tile")
+      .filter({ hasText: "Gemini" })
+      .count(),
+    1,
+  );
   await page
     .locator("#assistant")
     .getByRole("button", { name: /What did Chetana build at Tesla/ })

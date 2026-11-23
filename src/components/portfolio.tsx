@@ -623,7 +623,7 @@ export default function Portfolio() {
               Chetana Patel<span className="brand-dot">.</span>
             </span>
           </a>
-          <span>Chetana Patel · Northern Virginia</span>
+          <span>Chetana Patel</span>
           <span>
             © {new Date().getFullYear()} Chetana Patel{" "}
             <a href="#home" aria-label="Back to top">
