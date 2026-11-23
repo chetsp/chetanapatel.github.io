@@ -179,7 +179,7 @@ export default function Portfolio() {
                 <i />
               </span>
               <span>
-                chetana<span className="brand-dot">.</span>
+                Chetana Patel<span className="brand-dot">.</span>
               </span>
             </a>
             <div className="nav-links">
