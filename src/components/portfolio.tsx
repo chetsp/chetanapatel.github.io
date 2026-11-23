@@ -31,6 +31,7 @@ import {
 import Assistant from "./assistant";
 import ThemeToggle from "./theme-toggle";
 import ExperienceTimeline from "./experience-timeline";
+import ExperienceLogos from "./experience-logos";
 const nav = ["About", "Experience", "Work", "Skills", "Assistant", "Contact"];
 function SectionTitle({
   number,
@@ -328,19 +329,7 @@ export default function Portfolio() {
               ))}
             </div>
           </section>
-          <div className="trust-strip wrap">
-            <span>EXPERIENCE ACROSS</span>
-            <strong className="tesla-word">TESLA</strong>
-            <strong className="bank-word">
-              Bank of America <span>▰</span>
-            </strong>
-            <strong className="gmu-word">
-              GEORGE MASON <span>UNIVERSITY</span>
-            </strong>
-            <span className="trust-caption">
-              Software engineering and graduate study
-            </span>
-          </div>
+          <ExperienceLogos />
           <section id="about" className="section wrap">
             <Reveal>
               <SectionTitle
