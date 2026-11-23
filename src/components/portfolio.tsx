@@ -14,7 +14,6 @@ import {
   Github,
   GraduationCap,
   Linkedin,
-  MapPin,
   Menu,
   MessageSquare,
   Network,
@@ -239,12 +238,6 @@ export default function Portfolio() {
                     {p}
                   </button>
                 ))}
-              </div>
-              <div className="hero-location">
-                <MapPin size={12} />
-                {profile.location}
-                <span />
-                Open to software and applied AI roles
               </div>
             </div>
             <div
