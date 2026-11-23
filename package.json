@@ -9,8 +9,7 @@
     "typecheck": "tsc --noEmit",
     "test:smoke": "node tests/smoke.cjs",
     "format": "prettier --write src tests README.md",
-    "lint": "eslint src next.config.ts --max-warnings=0",
-    "test:contact": "node tests/contact-form.cjs"
+    "lint": "eslint src next.config.ts --max-warnings=0"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.0",

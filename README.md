@@ -38,9 +38,7 @@ The assistant works without credentials using a clearly labeled local knowledge 
 
 `POST /api/chat` accepts `{ "message": "How does RouteMind work?" }`. The server validates input, limits question length, uses a timeout, and grounds prompts in the structured portfolio knowledge base. Missing keys, provider errors, and timeouts fall back to deterministic answers. Only individual questions are sent to the provider; chats are not stored by this app. Before exposing a paid key to unrestricted traffic, configure platform-level rate limiting and spend limits. No live provider call was validated without credentials.
 
-The contact form submits directly through FormSubmit to `patelkchetana@gmail.com`, without opening a visitor's email app. The first real submission triggers FormSubmit's recipient verification email. **Click its activation link before messages can be delivered.** Check spam if needed, then submit a new message and confirm inbox receipt.
-
-FormSubmit receives the sender's name, email, and message, as approved by the site owner. The UI discloses this transfer. No API key is included in the client. Validation, pending, success, and failure states are checked with intercepted browser requests; no live message is sent by automated tests, and live delivery remains unverified until recipient activation. A failed submission preserves the visitor's message for retry.
+The contact section provides a direct email link, copy-email button, LinkedIn, GitHub, and résumé download. There is no message form or third-party form submission service.
 
 ## Content provenance
 

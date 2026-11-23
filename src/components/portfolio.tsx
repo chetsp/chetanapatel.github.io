@@ -30,7 +30,6 @@ import {
   skillGroups,
 } from "@/data/portfolio";
 import Assistant from "./assistant";
-import ContactForm from "./contact-form";
 import ExperienceTimeline from "./experience-timeline";
 type Tour =
   "Explore freely" | "Recruiter" | "Engineering Manager" | "Technical Peer";
@@ -786,9 +785,6 @@ export default function Portfolio() {
                   Résumé
                 </a>
               </div>
-            </Reveal>
-            <Reveal>
-              <ContactForm />
             </Reveal>
           </section>
         </main>
