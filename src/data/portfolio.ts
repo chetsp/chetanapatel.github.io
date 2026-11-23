@@ -195,6 +195,22 @@ export const experience = [
     icon: "T",
   },
   {
+    id: "george-mason",
+    company: "George Mason University",
+    role: "M.S. in Computer Science",
+    team: "Machine Learning Concentration",
+    date: "2026",
+    location: "Virginia",
+    summary:
+      "Graduate coursework and research focus in machine learning, distributed systems, and agentic AI workflows.",
+    bullets: [
+      "Study machine learning methods and distributed systems, with a focus on applying them to reliable agentic workflows.",
+      "Explore Model Context Protocol, retrieval, and tool integration in applied AI systems.",
+      "As a Graduate Teaching Assistant, mentor 40+ students in graph algorithms, probability, complexity analysis, and structured problem-solving.",
+    ],
+    icon: "G",
+  },
+  {
     id: "bank-of-america-senior",
     company: "Bank of America",
     role: "Senior Software Engineer",
@@ -211,22 +227,6 @@ export const experience = [
       "Integrated Docker-based CI/CD with AWS and GCP deployments, accelerating releases by 40% and reducing manual intervention by 50%.",
     ],
     icon: "B",
-  },
-  {
-    id: "george-mason",
-    company: "George Mason University",
-    role: "M.S. in Computer Science",
-    team: "Machine Learning Concentration",
-    date: "2026",
-    location: "Virginia",
-    summary:
-      "Graduate coursework and research focus in machine learning, distributed systems, and agentic AI workflows.",
-    bullets: [
-      "Study machine learning methods and distributed systems, with a focus on applying them to reliable agentic workflows.",
-      "Explore Model Context Protocol, retrieval, and tool integration in applied AI systems.",
-      "As a Graduate Teaching Assistant, mentor 40+ students in graph algorithms, probability, complexity analysis, and structured problem-solving.",
-    ],
-    icon: "G",
   },
   {
     id: "bank-of-america-engineer",
