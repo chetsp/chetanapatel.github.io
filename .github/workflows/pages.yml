@@ -30,6 +30,7 @@ jobs:
             echo "::warning::Select Settings > Pages > Source > GitHub Actions to prevent the legacy branch deployment from overwriting this site."
           fi
       - run: npm ci
+      - run: npm run lint
       - run: npm run build
         env:
           GITHUB_PAGES: "true"

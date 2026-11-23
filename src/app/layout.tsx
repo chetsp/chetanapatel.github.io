@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { profile } from "@/data/portfolio";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
@@ -8,11 +9,11 @@ import "@fontsource/sora/600.css";
 import "./globals.css";
 export const metadata: Metadata = {
   title: "Chetana Patel — Software & Applied AI Engineer",
-  description:
-    "Building production AI agents, scalable data platforms, and reliable software infrastructure. Explore Chetana Patel’s experience, projects, and engineering approach.",
+  description: profile.tagline,
   openGraph: {
     title: "Chetana Patel — Software & Applied AI Engineer",
-    description: "Applied AI. Reliable systems. Real-world impact.",
+    description:
+      "Software engineering experience in financial data platforms, backend systems, and agentic workflows.",
     type: "website",
   },
 };

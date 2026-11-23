@@ -18,7 +18,7 @@ npm run build
 npm start -- --port 3000
 ```
 
-Deploy the repository to a host supporting Next.js Node/serverless routes, such as Vercel, or run the production server yourself. Set the project root to this repository. No deployment has been performed by this implementation.
+Deploy the repository to a host supporting Next.js Node/serverless routes, such as Vercel, or run the production server yourself. Set the project root to this repository. The live portfolio is published through the GitHub Pages workflow below.
 
 **GitHub Pages cannot run `/api/chat`.** The provided Actions workflow publishes a static version with a local portfolio guide; use a Next.js host for live Gemini responses. The previous root `index.html` and `style.css` are preserved as legacy files. Choose GitHub Actions as the Pages source so the new build is deployed instead of these legacy files.
 
@@ -28,7 +28,7 @@ Deploy the repository to a host supporting Next.js Node/serverless routes, such 
 - `src/data/assistant.ts`: deterministic local knowledge answers.
 - `src/components/portfolio.tsx`: interactive homepage.
 - `src/app/globals.css`: visual tokens and responsive styles.
-- `public/Chetana_Patel_Resume.pdf`: downloadable résumé. Replace with an updated PDF using the same filename. The supplied PDF predates the Tesla update in the new brief.
+- `public/Chetana_Patel_Resume.pdf`: downloadable résumé. Replace with an updated PDF using the same filename.
 
 LinkedIn is `https://www.linkedin.com/in/cschetanapatel/`; GitHub is `https://github.com/chetsp`. The email is from the supplied résumé.
 
@@ -51,12 +51,13 @@ The reference `https://nikunj.codenex.dev/` was blocked by the environment's net
 ```sh
 npm run build
 npm run typecheck
+npm run lint
 # With the production server running in a second terminal:
 npx playwright install chromium
 npm run test:smoke
 ```
 
-For an existing system Chromium, use `CHROMIUM_PATH=/usr/bin/chromium npm run test:smoke`. `BASE_URL` overrides the default test server URL of `http://127.0.0.1:3000`. The smoke test covers five viewport sizes, reduced-motion visibility, anchors, tour selection, project filtering, timeline selection, skills, assistant replies, drawer keyboard behavior, PDF downloads, social links, case studies, validation errors, unknown routes, and mobile navigation. The local-mode checks expect the server to be running without a Gemini key.
+For an existing system Chromium, use `CHROMIUM_PATH=/usr/bin/chromium npm run test:smoke`. `BASE_URL` overrides the default test server URL of `http://127.0.0.1:3000`. The smoke test covers five viewport sizes, reduced-motion visibility, anchors, tour selection, project filtering, expanded experience and metric anchors, skills, assistant replies, drawer keyboard behavior, PDF downloads, social links, case studies, validation errors, unknown routes, and mobile navigation. The local-mode checks expect the server to be running without a Gemini key.
 
 ## GitHub Pages deployment
 
@@ -74,6 +75,8 @@ GITHUB_PAGES=true npm run build
 
 The `out/` folder contains the static site. The repository subpath is configured in `next.config.ts`; update the workflow's `NEXT_PUBLIC_BASE_PATH` if the repository name changes. Normal `npm run build` retains server-side chat support.
 
-## Current résumé link
+## Résumé downloads
 
-All résumé buttons use the Google Drive URL in `profile.resume` in `src/data/portfolio.ts` and open it in a new tab. To replace the résumé, update the document in Drive or change this centralized URL. Set Drive access to **Anyone with the link → Viewer** so visitors can open and download it without signing in. The PDF in `public/` is retained as a legacy local copy.
+All résumé buttons use `profile.resume` in `src/data/portfolio.ts`. The URL includes the GitHub Pages base path and points to `public/Chetana_Patel_Resume.pdf`. Replace that PDF with the same filename to update every download. The latest uploaded résumé is used as the canonical download.
+
+For the exported GitHub Pages site, run the smoke test with `STATIC_SITE=true` and `BASE_URL` set to the served repository subpath. Server API checks are skipped for that static build; local assistant interactions and asset links are still checked.

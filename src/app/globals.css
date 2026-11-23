@@ -358,28 +358,6 @@ em {
   overflow: hidden;
   background: radial-gradient(ellipse at center, #c7f58c0b, transparent 65%);
 }
-.visual-top,
-.visual-footer {
-  position: absolute;
-  left: 22px;
-  right: 10px;
-  font: 8px/1.6 monospace;
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  color: #6d7370;
-}
-.visual-top {
-  top: 13px;
-}
-.visual-top > span:last-child {
-  margin-left: auto;
-}
-.visual-footer {
-  bottom: 9px;
-  justify-content: space-between;
-}
 .orbit {
   border: 1px solid #c7f58c12;
   position: absolute;
@@ -437,11 +415,6 @@ em {
     0 0 55px #c7f58c0c,
     inset 0 0 25px #c7f58c08;
 }
-.system-core > small {
-  font-size: 6px;
-  letter-spacing: 0.6px;
-  margin-top: 6px;
-}
 .system-node {
   position: absolute;
   border: 1px solid #30362d;
@@ -493,29 +466,6 @@ em {
   bottom: 40px;
   left: 15px;
   transform: rotate(-2deg);
-}
-.signal-bars {
-  display: flex;
-  gap: 3px;
-  align-items: flex-end;
-}
-.signal-bars > i {
-  width: 3px;
-  height: 5px;
-  background: #61734e;
-}
-.signal-bars > i:nth-child(2) {
-  height: 8px;
-}
-.signal-bars > i:nth-child(3) {
-  height: 11px;
-}
-.signal-bars > i:nth-child(4) {
-  height: 14px;
-}
-.signal-bars > i:nth-child(5) {
-  height: 17px;
-  background: var(--lime);
 }
 .tour-bar {
   grid-column: 1/-1;
@@ -842,78 +792,6 @@ em {
 .principles-panel svg {
   color: #96b37c;
 }
-.experience-layout {
-  display: grid;
-  grid-template-columns: 275px 1fr;
-  gap: 25px;
-}
-.timeline-tabs {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  position: relative;
-}
-.timeline-tabs:before {
-  content: "";
-  position: absolute;
-  left: 31px;
-  top: 25px;
-  bottom: 30px;
-  width: 1px;
-  background: #2b2b2f;
-  z-index: -1;
-}
-.timeline-tabs > button {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  padding: 16px 13px;
-  border-radius: 8px;
-  text-align: left;
-  border: 1px solid transparent;
-}
-.timeline-tabs > button[aria-selected="true"] {
-  background: #171a13;
-  border-color: #c7f58c30;
-}
-.timeline-tabs > button > span:nth-child(2) {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.timeline-tabs strong {
-  font-size: 11px;
-  font-weight: 500;
-}
-.timeline-tabs small {
-  font-size: 9px;
-  color: #777781;
-}
-.timeline-tabs > button > svg {
-  margin-left: auto;
-  color: #626b58;
-}
-.company-icon {
-  font: 500 16px "Sora";
-  width: 35px;
-  height: 35px;
-  background: #18181c;
-  border: 1px solid #303034;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  color: #a0a0a8;
-}
-.company-0 {
-  color: #e69090;
-}
-.company-1,
-.company-2 {
-  color: #95aecf;
-}
-.company-3 {
-  color: #c2bc7d;
-}
 .experience-card {
   padding: 30px;
   min-height: 334px;
@@ -967,12 +845,6 @@ em {
 }
 .experience-card li > span {
   color: var(--lime);
-}
-.role-footnote {
-  display: block;
-  font-size: 8px;
-  color: #63636e;
-  margin-top: 14px;
 }
 .section-title-row {
   display: flex;
@@ -1342,12 +1214,6 @@ em {
 }
 .project-links > a:hover {
   color: var(--lime);
-}
-.project-source-note {
-  font-size: 8px;
-  color: #64646f;
-  text-align: center;
-  margin-top: 23px;
 }
 .skills-grid {
   display: grid;
@@ -1954,14 +1820,6 @@ em {
 .case-outcomes > li {
   padding: 7px 0;
 }
-.case-section > p.evidence-note {
-  font-size: 10px;
-  color: #71717d;
-  padding: 20px;
-  background: #131317;
-  border-left: 2px solid #596b44;
-  margin-top: 25px;
-}
 .next-project {
   margin: 35px 0 50px;
   padding: 25px;
@@ -2046,9 +1904,6 @@ em {
   }
   .trust-caption {
     display: none;
-  }
-  .experience-layout {
-    grid-template-columns: 240px 1fr;
   }
   .skills-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -2149,9 +2004,6 @@ em {
     height: 95px;
     width: 95px;
   }
-  .visual-footer {
-    bottom: 0;
-  }
   .tour-bar {
     margin-top: 30px;
     gap: 12px;
@@ -2231,31 +2083,6 @@ em {
     margin-top: 17px;
     flex-wrap: wrap;
     gap: 15px 25px;
-  }
-  .experience-layout {
-    grid-template-columns: 1fr;
-    gap: 17px;
-  }
-  .timeline-tabs {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 7px;
-  }
-  .timeline-tabs:before {
-    display: none;
-  }
-  .timeline-tabs > button {
-    padding: 11px;
-    gap: 9px;
-  }
-  .timeline-tabs > button > svg {
-    display: none;
-  }
-  .timeline-tabs strong {
-    font-size: 10px;
-  }
-  .timeline-tabs small {
-    font-size: 8px;
   }
   .experience-card {
     padding: 24px;
@@ -2560,15 +2387,6 @@ em {
     left: 0;
     bottom: 23px;
   }
-  .system-visual .visual-top {
-    font-size: 7px;
-    left: 0;
-    top: 0;
-  }
-  .visual-footer {
-    left: 0;
-    font-size: 7px;
-  }
   .tour-label > strong {
     font-size: 10px;
   }
@@ -2634,21 +2452,6 @@ em {
   }
   .principles-panel > div > span {
     font-size: 9px;
-  }
-  .timeline-tabs > button {
-    gap: 8px;
-    padding: 10px 7px;
-  }
-  .timeline-tabs strong {
-    font-size: 9px;
-  }
-  .company-icon {
-    height: 30px;
-    width: 30px;
-    font-size: 14px;
-  }
-  .timeline-tabs small {
-    font-size: 7px;
   }
   .experience-card {
     padding: 21px;
@@ -2892,4 +2695,172 @@ em {
 .experience-card li > svg {
   color: var(--lime);
   margin-top: 4px;
+}
+
+/* Experience stays expanded so every role can be scanned without interaction. */
+.hero h1 {
+  white-space: normal;
+  font-size: clamp(32px, 3.4vw, 46px);
+  max-width: 620px;
+  line-height: 1.25;
+}
+.hero-description {
+  max-width: 520px;
+}
+.experience-timeline {
+  position: relative;
+  display: grid;
+  gap: 24px;
+  padding-left: 60px;
+}
+.experience-timeline::before {
+  content: "";
+  position: absolute;
+  top: 35px;
+  bottom: 35px;
+  left: 19px;
+  width: 1px;
+  background: var(--line);
+}
+.experience-timeline .experience-card {
+  position: relative;
+  min-height: 0;
+  scroll-margin-top: 16px;
+}
+.timeline-marker {
+  position: absolute;
+  top: 28px;
+  left: -60px;
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #3b4332;
+  background: #171b13;
+  border-radius: 9px;
+  color: var(--lime);
+  font: 500 16px "Sora";
+}
+.experience-company {
+  font-size: 15px;
+  font-weight: 600;
+  color: #d7e2cb;
+}
+.experience-team {
+  font-size: 13px;
+  color: #b0b0ba;
+  margin-bottom: 10px;
+}
+.experience-timeline .role-date {
+  font-size: 12px;
+}
+.experience-timeline .role-location {
+  font-size: 11px;
+}
+.experience-timeline .role-summary {
+  font-size: 13px;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+.experience-timeline li {
+  font-size: 13px;
+  line-height: 1.85;
+}
+.experience-timeline li > span {
+  color: #a7a7b2;
+}
+.experience-timeline li strong {
+  color: #e6efd9;
+  font-weight: 600;
+}
+.experience-timeline ul {
+  margin-bottom: 0;
+}
+.featured-experience {
+  border-color: #6f875044;
+  background: linear-gradient(120deg, #c7f58c05, transparent 65%), var(--panel);
+}
+.skill-buttons {
+  min-height: 0;
+}
+.skill-buttons > button {
+  font-size: 11px;
+  padding: 6px 9px;
+}
+.skill-card h3 {
+  font-size: 14px;
+}
+.skill-card p {
+  margin-top: auto;
+  padding-top: 18px;
+}
+.skill-buttons {
+  margin-bottom: 20px;
+}
+@media (max-width: 800px) {
+  .experience-timeline {
+    padding-left: 44px;
+    gap: 20px;
+  }
+  .experience-timeline::before {
+    left: 13px;
+  }
+  .timeline-marker {
+    width: 28px;
+    height: 28px;
+    left: -44px;
+    top: 26px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+  .experience-timeline .experience-card {
+    padding: 22px;
+  }
+  .hero h1 {
+    font-size: clamp(29px, 5.5vw, 43px);
+  }
+}
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 30px;
+  }
+  .experience-timeline {
+    padding-left: 32px;
+  }
+  .experience-timeline::before {
+    left: 9px;
+  }
+  .timeline-marker {
+    left: -32px;
+    width: 21px;
+    height: 26px;
+    font-size: 10px;
+  }
+  .experience-timeline .experience-card {
+    padding: 18px;
+  }
+  .experience-timeline .role-top {
+    gap: 6px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .experience-company {
+    font-size: 13px;
+  }
+  .experience-timeline .role-date {
+    font-size: 11px;
+  }
+  .experience-timeline h3 {
+    font-size: 19px;
+  }
+  .experience-team {
+    font-size: 12px;
+  }
+  .experience-timeline li {
+    font-size: 12px;
+  }
+  .skill-buttons > button {
+    font-size: 10px;
+    padding: 5px 7px;
+  }
 }

@@ -7,7 +7,7 @@ export default function Assistant({ compact = false }: { compact?: boolean }) {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "guide",
-      text: "Hi, I’m Chetana’s portfolio guide. Ask me about the systems she’s built, her engineering approach, or where she could make an impact.",
+      text: "Ask me about Chetana’s engineering experience, a project’s architecture, or the tools she uses.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -68,7 +68,7 @@ export default function Assistant({ compact = false }: { compact?: boolean }) {
           <Sparkles size={17} />
         </span>
         <div>
-          <strong>Meet Chetana, through her work.</strong>
+          <strong>Chetana’s portfolio assistant</strong>
           <small>
             <i />
             {mode}
@@ -125,8 +125,8 @@ export default function Assistant({ compact = false }: { compact?: boolean }) {
         </button>
       </form>
       <p className="chat-disclaimer">
-        Grounded in supplied experience & public project docs. No private
-        company data.
+        Ask about my engineering experience, system architecture, or GitHub
+        projects.
       </p>
     </div>
   );

@@ -8,7 +8,8 @@
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "test:smoke": "node tests/smoke.cjs",
-    "format": "prettier --write src tests README.md"
+    "format": "prettier --write src tests README.md",
+    "lint": "eslint src next.config.ts --max-warnings=0"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.0",
@@ -24,6 +25,8 @@
     "@types/node": "^24.0.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.6",
     "playwright": "^1.65.1",
     "prettier": "^3.10.1",
     "tailwindcss": "^4.1.0",

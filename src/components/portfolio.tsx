@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import {
-  ArrowDown,
   ArrowDownToLine,
   ArrowRight,
   ArrowUpRight,
@@ -22,28 +21,27 @@ import {
   Network,
   Send,
   Sparkles,
-  Terminal,
   X,
 } from "lucide-react";
 import {
   categories,
   Category,
-  experience,
   profile,
   projects,
   skillGroups,
 } from "@/data/portfolio";
 import Assistant from "./assistant";
+import ExperienceTimeline from "./experience-timeline";
 type Tour =
   "Explore freely" | "Recruiter" | "Engineering Manager" | "Technical Peer";
 const tours: Record<Tour, { text: string; target: string }> = {
   "Explore freely": {
-    text: "Take your time. Follow your curiosity.",
+    text: "Browse experience, projects, and technical details.",
     target: "about",
   },
   Recruiter: {
     text: "Start with impact, experience, and the résumé.",
-    target: "experience",
+    target: "bank-of-america-senior",
   },
   "Engineering Manager": {
     text: "Explore system ownership and engineering decisions.",
@@ -99,7 +97,6 @@ export default function Portfolio() {
   const [menu, setMenu] = useState(false);
   const [tour, setTour] = useState<Tour>("Explore freely");
   const [filter, setFilter] = useState<Category>("All work");
-  const [role, setRole] = useState(0);
   const [skill, setSkill] = useState("");
   const [copied, setCopied] = useState(false);
   const [drawer, setDrawer] = useState(false);
@@ -123,6 +120,7 @@ export default function Portfolio() {
   useEffect(() => {
     if (!drawer) return;
     const previous = document.body.style.overflow;
+    const restoreFocus = trigger.current;
     document.body.style.overflow = "hidden";
     close.current?.focus();
     function key(e: KeyboardEvent) {
@@ -148,7 +146,7 @@ export default function Portfolio() {
     return () => {
       document.body.style.overflow = previous;
       document.removeEventListener("keydown", key);
-      trigger.current?.focus();
+      restoreFocus?.focus();
     };
   }, [drawer]);
   async function copy() {
@@ -193,12 +191,7 @@ export default function Portfolio() {
                 </a>
               ))}
             </div>
-            <a
-              href={profile.resume}
-              className="resume-button"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={profile.resume} className="resume-button" download>
               Résumé <ArrowDownToLine size={14} />
             </a>
             <button
@@ -235,32 +228,23 @@ export default function Portfolio() {
                 <ArrowUpRight size={12} />
               </div>
               <p className="hero-intro">HELLO, I’M CHETANA KAMRAJ PATEL</p>
-              <h1>
-                Intelligence, engineered.
-                <br />
-                <span>Impact, delivered.</span>
-              </h1>
+              <h1>{profile.title}</h1>
               <p className="hero-description">{profile.tagline}</p>
               <div className="hero-buttons">
                 <a href="#work" className="button primary">
                   Explore my work <ArrowUpRight size={16} />
                 </a>
-                <a
-                  href={profile.resume}
-                  className="button secondary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ArrowDownToLine size={15} /> View résumé
+                <a href={profile.resume} className="button secondary" download>
+                  <ArrowDownToLine size={15} /> Download résumé
                 </a>
               </div>
               <div className="pillar-links">
                 {(
                   [
                     "Agents & MCP",
-                    "Data platforms",
-                    "Machine learning",
-                    "Full-stack",
+                    "Product Engineering",
+                    "Applied AI",
+                    "Full-Stack",
                   ] as Category[]
                 ).map((p, i) => (
                   <button onClick={() => chooseCategory(p)} key={p}>
@@ -281,17 +265,13 @@ export default function Portfolio() {
                 <MapPin size={12} />
                 {profile.location}
                 <span />
-                Available for meaningful problems
+                Open to software and applied AI roles
               </div>
             </div>
             <div
               className="system-visual"
               aria-label="Engineering focus: context, reasoning, reliable systems"
             >
-              <div className="visual-top">
-                <span className="status-dot" />
-                SYSTEM / CHETANA.OS<span>v.2026</span>
-              </div>
               <div className="orbit orbit-one" />
               <div className="orbit orbit-two" />
               <div className="orbit orbit-three" />
@@ -299,15 +279,14 @@ export default function Portfolio() {
               <div className="visual-line vertical" />
               <div className="system-core">
                 <Braces size={42} strokeWidth={1.3} />
-                <small>BUILD WITH INTENT</small>
               </div>
               <div className="system-node node-one">
                 <span className="node-symbol">
                   <Sparkles size={17} />
                 </span>
                 <div>
-                  <strong>Applied intelligence</strong>
-                  <small>Grounded. Useful. Human.</small>
+                  <strong>Agent workflows</strong>
+                  <small>Typed inputs and validation</small>
                 </div>
                 <i />
               </div>
@@ -316,30 +295,20 @@ export default function Portfolio() {
                   <Database size={17} />
                 </span>
                 <div>
-                  <strong>Data at scale</strong>
+                  <strong>Financial data platforms</strong>
                   <small>55M+ daily calculations</small>
                 </div>
                 <i />
               </div>
               <div className="system-node node-three">
                 <span className="node-symbol">
-                  <Terminal size={17} />
+                  <Code2 size={17} />
                 </span>
                 <div>
-                  <strong>Reliable by design</strong>
-                  <small>From prototype to production</small>
+                  <strong>Backend services</strong>
+                  <small>Processing, APIs, and event streams</small>
                 </div>
                 <i />
-              </div>
-              <div className="visual-footer">
-                <span>CONTEXT → REASON → BUILD</span>
-                <span className="signal-bars">
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                </span>
               </div>
             </div>
             <div className="tour-bar">
@@ -347,7 +316,7 @@ export default function Portfolio() {
                 <Network size={19} />
               </div>
               <div className="tour-label">
-                <strong>Your time. Your perspective.</strong>
+                <strong>Choose a reading focus</strong>
                 <span>{tours[tour].text}</span>
               </div>
               <label className="tour-select">
@@ -377,19 +346,19 @@ export default function Portfolio() {
                   value: "55M+",
                   label: "Daily calculations automated",
                   note: "BANK OF AMERICA",
-                  target: "experience",
+                  target: "bank-of-america-senior",
                 },
                 {
                   value: "52%",
                   label: "Higher task throughput",
                   note: "DISTRIBUTED SYSTEMS",
-                  target: "experience",
+                  target: "bank-of-america-senior",
                 },
                 {
                   value: "$800K",
                   label: "Annual infrastructure savings",
                   note: "PLATFORM MODERNIZATION",
-                  target: "experience",
+                  target: "bank-of-america-senior",
                 },
                 {
                   value: "4",
@@ -419,59 +388,49 @@ export default function Portfolio() {
               GEORGE MASON <span>UNIVERSITY</span>
             </strong>
             <span className="trust-caption">
-              Industry scale. Research curiosity.
+              Software engineering and graduate study
             </span>
           </div>
           <section id="about" className="section wrap">
             <Reveal>
               <SectionTitle
                 number="01"
-                label="THE PERSON BEHIND THE SYSTEMS"
-                title="Curious by nature. Engineer by practice."
-                description="I work at the intersection of intelligent software and the infrastructure that makes it dependable."
+                label="BACKGROUND"
+                title="Engineering Background & Focus"
+                description="My background includes financial data processing, manufacturing software, and applied AI applications."
               />
             </Reveal>
             <Reveal className="bento">
               <article className="bento-main panel">
                 <span className="tiny-label">
-                  <Code2 size={14} /> ENGINEERING PHILOSOPHY
+                  <Code2 size={14} /> ENGINEERING APPROACH
                 </span>
-                <h3>
-                  Make the complex
-                  <br />
-                  <em>feel simple.</em>
-                </h3>
+                <h3>Backend systems and applied AI</h3>
                 <p>
-                  I’m a software engineer who cares as much about what happens
-                  after deployment as what happens in a demo. My work spans
-                  financial data platforms, manufacturing software, and applied
-                  AI.
+                  I build distributed processing systems, backend services, and
+                  AI-assisted workflows. At Bank of America, my work covered
+                  task scheduling, financial calculations, event streams, and
+                  margin processing.
                 </p>
                 <p>
-                  I like clear interfaces, grounded reasoning, and systems you
-                  can trust when the stakes are real.
+                  My engineering priorities are explicit data contracts,
+                  predictable failure handling, and enough operational
+                  visibility to diagnose problems after deployment.
                 </p>
-                <a
-                  href={profile.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-link"
-                >
-                  The longer story, in my résumé <ArrowUpRight size={14} />
+                <a href={profile.resume} download className="inline-link">
+                  Download my résumé <ArrowUpRight size={14} />
                 </a>
               </article>
               <article className="panel focus-panel">
                 <span className="tiny-label">
                   <Sparkles size={14} /> CURRENT FOCUS
                 </span>
-                <h3>
-                  AI that does more
-                  <br />
-                  than answer.
-                </h3>
+                <h3>Agent workflows and tool integration</h3>
                 <p>
-                  Agentic workflows. Model Context Protocol. Reliable tools,
-                  useful context, and evaluations that keep us honest.
+                  I’m focused on typed extraction, retrieval, MCP tool
+                  integration, and evaluations. I use validation and human
+                  review where an agent’s output can change an operational
+                  workflow.
                 </p>
                 <div className="mini-pipeline">
                   <span>Context</span>
@@ -492,16 +451,16 @@ export default function Portfolio() {
                 <span className="education-year">2026</span>
               </article>
               <article className="panel principles-panel">
-                <span className="tiny-label">MY DEFAULT SETTINGS</span>
+                <span className="tiny-label">WORKING PRACTICES</span>
                 <div>
                   <span>
-                    <Check size={14} /> Own the outcome
+                    <Check size={14} /> Follow through from design to operations
                   </span>
                   <span>
-                    <Check size={14} /> Question the assumptions
+                    <Check size={14} /> Validate inputs and failure cases
                   </span>
                   <span>
-                    <Check size={14} /> Build for the next engineer
+                    <Check size={14} /> Document interfaces and decisions
                   </span>
                 </div>
               </article>
@@ -511,99 +470,12 @@ export default function Portfolio() {
             <Reveal>
               <SectionTitle
                 number="02"
-                label="EXPERIENCE, NOT JUST A TECH STACK"
-                title="Where I’ve put it into practice."
-                description="From financial infrastructure to factory software. A consistent focus on systems that make a difference."
+                label="PROFESSIONAL EXPERIENCE"
+                title="Experience & Education"
+                description="Roles, responsibilities, and the systems I worked on."
               />
             </Reveal>
-            <Reveal className="experience-layout">
-              <div
-                className="timeline-tabs"
-                role="tablist"
-                aria-label="Experience"
-              >
-                {experience.map((e, i) => (
-                  <button
-                    id={`role-tab-${i}`}
-                    aria-selected={role === i}
-                    aria-controls={`role-panel-${i}`}
-                    role="tab"
-                    tabIndex={role === i ? 0 : -1}
-                    onKeyDown={(ev) => {
-                      if (
-                        ["ArrowDown", "ArrowUp", "Home", "End"].includes(ev.key)
-                      ) {
-                        ev.preventDefault();
-                        const next =
-                          ev.key === "Home"
-                            ? 0
-                            : ev.key === "End"
-                              ? experience.length - 1
-                              : (i +
-                                  (ev.key === "ArrowDown" ? 1 : -1) +
-                                  experience.length) %
-                                experience.length;
-                        setRole(next);
-                        document.getElementById(`role-tab-${next}`)?.focus();
-                      }
-                    }}
-                    onClick={() => setRole(i)}
-                    key={e.company + e.date}
-                  >
-                    <span className={`company-icon company-${i}`}>
-                      {e.icon}
-                    </span>
-                    <span>
-                      <strong>{e.company}</strong>
-                      <small>{e.date}</small>
-                    </span>
-                    <ArrowUpRight size={15} />
-                  </button>
-                ))}
-              </div>
-              <AnimatePresence mode="wait">
-                <motion.article
-                  key={role}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="experience-card panel"
-                  role="tabpanel"
-                  id={`role-panel-${role}`}
-                  aria-labelledby={`role-tab-${role}`}
-                >
-                  <div className="role-top">
-                    <span className="tiny-label">{experience[role].team}</span>
-                    <span className="role-date">{experience[role].date}</span>
-                  </div>
-                  <h3>{experience[role].role}</h3>
-                  <div className="role-location">
-                    <MapPin size={12} />
-                    {experience[role].location}
-                  </div>
-                  <p className="role-summary">{experience[role].summary}</p>
-                  <ul>
-                    {experience[role].bullets.map((b) => (
-                      <li key={b}>
-                        <ArrowUpRight size={12} />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={`/work/${experience[role].link}`}
-                    className="inline-link"
-                  >
-                    {experience[role].related}
-                    <ArrowUpRight size={14} />
-                  </Link>
-                  <small className="role-footnote">
-                    Related personal projects are independent of employer work.
-                  </small>
-                </motion.article>
-              </AnimatePresence>
-            </Reveal>
+            <ExperienceTimeline />
           </section>
           <section id="work" className="section wrap">
             <Reveal>
@@ -611,8 +483,8 @@ export default function Portfolio() {
                 <SectionTitle
                   number="03"
                   label="SELECTED WORK"
-                  title="Less talk. More shipped."
-                  description="Real repositories. Intentional architecture. A look under the hood."
+                  title="Selected Work & Open-Source Projects"
+                  description="Implementation details, architecture decisions, and source code for four projects."
                 />
                 <a
                   className="inline-link"
@@ -651,7 +523,7 @@ export default function Portfolio() {
               <AnimatePresence mode="popLayout">
                 {projects
                   .filter((p) => filter === "All work" || p.category === filter)
-                  .map((p, i) => (
+                  .map((p) => (
                     <motion.article
                       layout
                       initial={{ opacity: 0, y: 12 }}
@@ -703,9 +575,7 @@ export default function Portfolio() {
                             <span>
                               <Database size={14} /> PERSISTENT MYSQL <i />
                             </span>
-                            <small>
-                              CONTAINERIZED. ORCHESTRATED. CONNECTED.
-                            </small>
+                            <small>DOCKER + KUBERNETES + HELM</small>
                           </div>
                         ) : p.slug === "gita-guru" ? (
                           <div className="language-art">
@@ -713,7 +583,7 @@ export default function Portfolio() {
                             <span>Knowledge</span>
                             <span>அறிவு</span>
                             <div>
-                              <Sparkles size={16} /> One story. Many languages.
+                              <Sparkles size={16} /> Multilingual learning
                             </div>
                           </div>
                         ) : (
@@ -768,21 +638,17 @@ export default function Portfolio() {
                   ))}
               </AnimatePresence>
             </motion.div>
-            <p className="project-source-note">
-              Project scope from public READMEs. Professional impact metrics
-              above are from my résumé.
-            </p>
           </section>
           <section id="skills" className="section wrap">
             <Reveal>
               <SectionTitle
                 number="04"
                 label="THE TOOLKIT"
-                title="The right tool. For the real problem."
-                description="Production foundations, hands-on project tools, and the technologies I’m exploring next."
+                title="Technical Stack"
+                description="Languages, frameworks, and infrastructure used across my work and current technical focus."
               />
             </Reveal>
-            <Reveal className="skills-grid">
+            <div className="skills-grid">
               {skillGroups.map((g, i) => (
                 <article className="panel skill-card" key={g.name}>
                   <span className="skill-icon">
@@ -812,14 +678,14 @@ export default function Portfolio() {
                   <p>{g.detail}</p>
                 </article>
               ))}
-            </Reveal>
+            </div>
             <div className="skill-detail" aria-live="polite">
               {skill ? (
                 <>
                   <span className="status-dot" />
                   <strong>{skill}</strong> —{" "}
                   {["MCP", "ADK", "OpenTelemetry"].includes(skill) ? (
-                    "A current learning and exploration focus. See public case studies for verified implementation details."
+                    "Current focus: tool integration, agent workflows, and observability."
                   ) : projects.filter((p) =>
                       p.tags.some((t) =>
                         t.toLowerCase().includes(skill.toLowerCase()),
@@ -841,13 +707,13 @@ export default function Portfolio() {
                         ))}
                     </>
                   ) : (
-                    "Part of the broader engineering toolkit. See experience and the résumé for context."
+                    "Used across backend engineering and infrastructure work. See the experience section for context."
                   )}
                 </>
               ) : (
                 <>
-                  <ArrowRight size={12} /> Pick a technology to find its place
-                  in the work.
+                  <ArrowRight size={12} /> Select a technology to see related
+                  projects and experience.
                 </>
               )}
             </div>
@@ -855,30 +721,27 @@ export default function Portfolio() {
           <section id="assistant" className="section wrap assistant-section">
             <Reveal className="assistant-copy">
               <div className="eyebrow">
-                <span>05</span> A MORE INTERACTIVE INTRODUCTION
+                <span>05</span> PORTFOLIO ASSISTANT
               </div>
-              <h2>
-                A portfolio.
-                <br />
-                With a conversation.
-              </h2>
+              <h2>Ask About My Work</h2>
               <p>
-                Skip the scrolling. Ask about my experience, explore a project’s
-                architecture, or find the work most relevant to your team.
+                Ask about a role, a project’s architecture, or the technical
+                decisions behind it.
               </p>
               <div className="assistant-benefits">
                 <span>
-                  <Check size={14} /> Grounded in my actual work
+                  <Check size={14} /> Experience and responsibilities
                 </span>
                 <span>
-                  <Check size={14} /> Clear about what it doesn’t know
+                  <Check size={14} /> Architecture and implementation
                 </span>
                 <span>
-                  <Check size={14} /> No sign-up. Just curiosity.
+                  <Check size={14} /> Links to project source code
                 </span>
               </div>
               <span className="guide-note">
-                <Sparkles size={13} /> Your shortcut to the relevant details.
+                <Sparkles size={13} /> Try a question about RouteMind or
+                financial data processing.
               </span>
             </Reveal>
             <Reveal>
@@ -888,18 +751,12 @@ export default function Portfolio() {
           <section id="contact" className="section wrap contact-section">
             <Reveal>
               <div className="eyebrow">
-                <span>06</span> THE NEXT CHAPTER
+                <span>06</span> CONTACT
               </div>
-              <h2>
-                Good work starts with
-                <br />
-                <span>a good conversation.</span>
-              </h2>
+              <h2>Get in Touch</h2>
               <p>
-                Have a complex problem, an interesting role, or a thoughtful
-                question?
-                <br />
-                I’d love to hear about it.
+                Contact me about software engineering and applied AI roles, or
+                questions about my projects.
               </p>
               <div className="email-row">
                 <a href={`mailto:${profile.email}`}>
@@ -924,11 +781,7 @@ export default function Portfolio() {
                   LinkedIn
                   <ArrowUpRight size={13} />
                 </a>
-                <a
-                  href={profile.resume}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={profile.resume} download>
                   <ArrowDownToLine size={16} />
                   Résumé
                 </a>
@@ -952,7 +805,7 @@ export default function Portfolio() {
                   );
                 }}
               >
-                <span className="tiny-label">HAVE SOMETHING IN MIND?</span>
+                <span className="tiny-label">SEND A MESSAGE</span>
                 <div className="form-row">
                   <label>
                     Your name
@@ -978,14 +831,14 @@ export default function Portfolio() {
                   Your message
                   <textarea
                     name="message"
-                    placeholder="A little about what you’re building…"
+                    placeholder="Tell me about the role, project, or question…"
                     required
                     maxLength={3000}
                     rows={4}
                   />
                 </label>
                 <button className="button primary" type="submit">
-                  Let’s start a conversation <Send size={14} />
+                  Compose email <Send size={14} />
                 </button>
                 <small>
                   Opens your email app. No message is stored on this site.
@@ -1005,7 +858,7 @@ export default function Portfolio() {
             </span>
             <span>chetana.</span>
           </a>
-          <span>Built with intention. Always a work in progress.</span>
+          <span>Chetana Patel · Northern Virginia</span>
           <span>
             © {new Date().getFullYear()} Chetana Patel{" "}
             <a href="#home" aria-label="Back to top">

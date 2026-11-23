@@ -27,12 +27,12 @@ export default async function CaseStudy({
     <>
       <header className="case-nav wrap">
         <Link href="/" className="brand">
-          chetana.
+          Chetana Patel
         </Link>
         <Link href="/#work">
           <ArrowLeft size={14} /> All work
         </Link>
-        <a href={profile.resume} target="_blank" rel="noopener noreferrer">
+        <a href={profile.resume} download>
           Résumé ↓
         </a>
       </header>
@@ -63,18 +63,18 @@ export default async function CaseStudy({
             <p>{p.metricLabel}</p>
           </div>
           <div>
-            <span className="tiny-label">A NOTE ON EVIDENCE</span>
+            <span className="tiny-label">IMPLEMENTATION SCOPE</span>
             <p>{p.note}</p>
           </div>
         </div>
         <section className="case-section">
           <span className="eyebrow">01 / THE PROBLEM</span>
-          <h2>Start with the real question.</h2>
+          <h2>Problem</h2>
           <p>{p.problem}</p>
         </section>
         <section className="case-section">
           <span className="eyebrow">02 / ARCHITECTURE</span>
-          <h2>How the pieces fit.</h2>
+          <h2>Architecture</h2>
           <div className="architecture-flow">
             {p.architecture.map((a, i) => (
               <div key={a}>
@@ -89,7 +89,7 @@ export default async function CaseStudy({
         </section>
         <section className="case-section">
           <span className="eyebrow">03 / ENGINEERING DECISIONS</span>
-          <h2>The choices behind the code.</h2>
+          <h2>Technical Decisions</h2>
           {p.decisions.map((d, i) => (
             <div className="decision" key={d}>
               <span>0{i + 1}</span>
@@ -99,16 +99,12 @@ export default async function CaseStudy({
         </section>
         <section className="case-section">
           <span className="eyebrow">04 / OUTCOMES & BOUNDARIES</span>
-          <h2>What it demonstrates.</h2>
+          <h2>Outcomes</h2>
           <ul className="case-outcomes">
             {p.outcomes.map((o) => (
               <li key={o}>{o}</li>
             ))}
           </ul>
-          <p className="evidence-note">
-            Source: public repository README, inspected November 22, 2026.{" "}
-            {p.note}
-          </p>
           <a
             href={p.repo}
             target="_blank"
@@ -126,7 +122,7 @@ export default async function CaseStudy({
       </main>
       <footer className="footer wrap">
         <Link href="/">Chetana Patel</Link>
-        <Link href="/#contact">Let’s build something useful ↗</Link>
+        <Link href="/#contact">Contact Chetana ↗</Link>
       </footer>
     </>
   );

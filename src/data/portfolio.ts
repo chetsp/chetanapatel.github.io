@@ -1,9 +1,9 @@
 export type Category =
   | "All work"
   | "Agents & MCP"
-  | "Data platforms"
-  | "Machine learning"
-  | "Full-stack";
+  | "Product Engineering"
+  | "Applied AI"
+  | "Full-Stack";
 export type Project = {
   slug: string;
   name: string;
@@ -26,20 +26,19 @@ export const profile = {
   shortName: "Chetana Patel",
   title: "Software & Applied AI Engineer",
   tagline:
-    "Building production AI agents, scalable data platforms, and reliable software infrastructure.",
+    "I build high-throughput financial data platforms and reliable agentic workflows—from processing 55M+ daily calculations at Bank of America to shipping conversational logistics agents.",
   location: "Northern Virginia / Washington, D.C.",
   email: "patelkchetana@gmail.com",
   github: "https://github.com/chetsp",
   linkedin: "https://www.linkedin.com/in/cschetanapatel/",
-  resume:
-    "https://drive.google.com/file/d/1QKwLcst_WOcJED3Td2-cdrqP0Czb_tDL/view?usp=sharing",
+  resume: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/Chetana_Patel_Resume.pdf`,
 };
 export const categories: Category[] = [
   "All work",
   "Agents & MCP",
-  "Data platforms",
-  "Machine learning",
-  "Full-stack",
+  "Product Engineering",
+  "Applied AI",
+  "Full-Stack",
 ];
 export const projects: Project[] = [
   {
@@ -47,7 +46,7 @@ export const projects: Project[] = [
     name: "RouteMind AI",
     kicker: "CONVERSATIONAL LOGISTICS",
     description:
-      "Natural language in. Verified shipment plans out. An AI planning system that knows when to ask, reason, and say no.",
+      "Shipment planning with LangGraph, PydanticAI, FastAPI, and Chroma. Validates multi-leg routing constraints and asks for missing parameters before generating a plan.",
     category: "Agents & MCP",
     tags: ["LangGraph", "PydanticAI", "FastAPI", "Chroma", "PostgreSQL"],
     repo: "https://github.com/chetsp/RouteMind-AI",
@@ -75,15 +74,15 @@ export const projects: Project[] = [
       "The fixed demo compares a $2,100 route via Phoenix with a $3,400 direct service; a $500 ceiling returns no feasible route.",
       "Includes cited carrier-policy answers, a read-only data explorer, and independently verified what-if options.",
     ],
-    note: "Local demonstration with synthetic data, not live freight quotes. No measured production savings or live-model quality claims.",
+    note: "Uses synthetic carriers, schedules, and prices. Supports planning and comparison; does not book shipments or return live freight quotes.",
   },
   {
     slug: "student-survey",
-    name: "Campus, connected.",
+    name: "Campus Survey Platform",
     kicker: "CLOUD-NATIVE FULL STACK",
     description:
-      "A complete campus survey platform, from a responsive React experience to persistent APIs and a Kubernetes deployment.",
-    category: "Full-stack",
+      "A React frontend backed by FastAPI REST services and persistent MySQL storage, packaged with Docker and deployed to Kubernetes using Helm.",
+    category: "Full-Stack",
     tags: ["React", "FastAPI", "MySQL", "Docker", "Kubernetes", "Helm"],
     repo: "https://github.com/chetsp/Full-Stack-Student-Survey-Application",
     metric: "End to end",
@@ -107,21 +106,21 @@ export const projects: Project[] = [
     outcomes: [
       "Implements create, read, update, and delete workflows for campus surveys.",
       "Includes structured form fields, persistent storage, and Swagger API documentation.",
-      "Repository documents Docker image builds, AWS EC2 deployment, and k3s orchestration.",
+      "Packages frontend and backend images for deployment to k3s on AWS EC2 using Helm.",
     ],
-    note: "Capabilities are documented in the public repository. The portfolio does not claim a currently available live deployment or performance benchmark.",
+    note: "React frontend and FastAPI backend run as separate containers, with MySQL persistence and Helm-managed Kubernetes deployments.",
   },
   {
     slug: "gita-guru",
     name: "Gita Guru",
     kicker: "APPLIED AI · ACCESSIBLE LEARNING",
     description:
-      "Ancient wisdom, a more accessible interface. Multilingual explanations, illustrated stories, and browser-native narration.",
-    category: "Machine learning",
+      "A multilingual learning web app using Claude and JavaScript for explanations across 26+ languages, with browser-native audio narration through the Web Speech API.",
+    category: "Applied AI",
     tags: ["JavaScript", "Claude", "Web Speech API", "HTML / CSS"],
     repo: "https://github.com/chetsp/Gita-Guru",
     metric: "26+",
-    metricLabel: "documented learning languages",
+    metricLabel: "learning languages",
     color: "violet",
     problem:
       "Make a complex text approachable for learners of different ages and languages through conversational explanations and interactive storytelling.",
@@ -138,26 +137,26 @@ export const projects: Project[] = [
       "Use sessionStorage for in-session progress, streaks, XP, and badges.",
     ],
     outcomes: [
-      "README describes learning across 18 chapters with 26+ languages.",
+      "Supports 18 chapters and explanations in 26+ languages.",
       "Includes four-panel stories, narration controls, and an animated SVG character.",
-      "Demonstrates an applied generative AI learning interface.",
+      "Uses Claude to generate verse explanations, story analogies, and learning activities.",
     ],
-    note: "Repository-described feature scope, not independently benchmarked learning outcomes. A public deployment should proxy provider requests to protect credentials.",
+    note: "The browser uses speech synthesis for narration and sessionStorage for progress. Public hosting requires a server-side proxy for provider credentials.",
   },
   {
     slug: "ai-modernization",
-    name: "From design to delivery.",
+    name: "Survey Application Modernization",
     kicker: "INTERFACE MODERNIZATION",
     description:
-      "A design-first rebuild of a university survey experience, turning a Figma export into a working React and FastAPI product.",
-    category: "Data platforms",
+      "Converted a static Figma design system into a full-CRUD application using React, TypeScript, Tailwind, and FastAPI, including form validation and persistent storage.",
+    category: "Product Engineering",
     tags: ["React", "TypeScript", "Tailwind", "FastAPI", "SQLite"],
     repo: "https://github.com/chetsp/AI-Modernization",
     metric: "Full CRUD",
     metricLabel: "from static design to live data",
     color: "amber",
     problem:
-      "A generated interface is only the beginning. Form state, validation, routing, and persistence are needed to turn a design artifact into a usable application.",
+      "The static Figma export needed form state, validation, routing, and persistent CRUD endpoints before students could submit and manage surveys.",
     architecture: [
       "Figma Make design",
       "React + Tailwind",
@@ -172,90 +171,95 @@ export const projects: Project[] = [
     ],
     outcomes: [
       "Connects student survey submission, listing, and deletion to a persistent backend.",
-      "Includes a portfolio homepage and a computer science department information page.",
-      "Documents how the generated frontend was refined into functional software.",
+      "Includes client-side routes for the homepage, department information, and student survey.",
+      "Replaces static form elements with controlled inputs, validation, and API-backed submission management.",
     ],
-    note: "An academic modernization project. No operational performance claims are made.",
+    note: "University project covering design-system implementation, client-side validation, routing, and CRUD integration.",
   },
 ];
 export const experience = [
   {
+    id: "tesla",
     company: "Tesla",
     role: "Software Engineering Intern",
     team: "Factory Software Team",
     date: "Summer 2026",
-    location: "Fremont, California",
-    summary: "Manufacturing infrastructure meets conversational AI.",
+    location: "Fremont, CA",
+    summary:
+      "Manufacturing infrastructure and Carrier Rate Creation workflows.",
     bullets: [
-      "Built manufacturing infrastructure for factory software workflows.",
-      "Designed a conversational AI assistant for Carrier Rate Creation.",
+      "Built manufacturing infrastructure workflows, connecting factory software requirements with operational processes.",
+      "Designed a conversational AI assistant for Carrier Rate Creation, with structured validation of required inputs before changes could proceed.",
+      "Included human-in-the-loop safeguards so users could review proposed actions and resolve incomplete requests.",
     ],
-    link: "routemind-ai",
-    related: "Explore related logistics work",
     icon: "T",
   },
   {
+    id: "bank-of-america-senior",
     company: "Bank of America",
     role: "Senior Software Engineer",
     team: "Asset Valuation & Data Platforms",
     date: "2022 — 2025",
-    location: "Financial systems at scale",
-    summary: "High-throughput platforms. Measurable business impact.",
+    location: "Margin Call Processing & Asset Valuation Platform",
+    summary:
+      "Built backend processing and event-driven services for financial calculations and margin workflows.",
     bullets: [
-      "Automated 55M+ daily calculations, reducing latency by two-thirds.",
-      "Built distributed scheduling with Go workers and Python orchestration; improved throughput by approximately 52%.",
-      "Delivered a Kafka and REST service with 85% faster performance and $800K in annual infrastructure savings.",
-      "Redesigned processing for 10M+ financial contract calculations daily, delivering margin calls 6 hours sooner.",
+      "Automated 55M+ daily calculations through a distributed processing framework on Linux clusters. Caching and concurrency reduced latency by two-thirds.",
+      "Built a distributed task scheduler with Go workers and Python orchestration and monitoring, delivering 52% higher task throughput and fault-tolerant execution across services.",
+      "Replaced legacy messaging with Kafka event streams and REST APIs, improving performance by 85% and generating $800K annual infrastructure savings.",
+      "Redesigned Margin Call Processing with event-driven microservices handling 10M+ financial contract calculations per day, delivering margin calls 6 hours sooner and removing 10 hours of daily manual review.",
+      "Integrated Docker-based CI/CD with AWS and GCP deployments, accelerating releases by 40% and reducing manual intervention by 50%.",
     ],
-    link: "student-survey",
-    related: "Explore related platform engineering",
     icon: "B",
   },
   {
-    company: "Bank of America",
-    role: "Software Engineer",
-    team: "Reliable software foundations",
-    date: "2017 — 2022",
-    location: "Backend engineering",
-    summary: "Turning repetitive work into dependable systems.",
-    bullets: [
-      "Built a concurrent Python interpreter processing 1M+ call logs in under 10 seconds.",
-      "Developed API load-testing infrastructure that saved approximately 450 engineering hours.",
-      "Improved production monitoring using Java and Grafana.",
-    ],
-    link: "ai-modernization",
-    related: "Explore related full-stack work",
-    icon: "B",
-  },
-  {
+    id: "george-mason",
     company: "George Mason University",
     role: "M.S. in Computer Science",
-    team: "Machine Learning concentration",
+    team: "Machine Learning Concentration",
     date: "2026",
     location: "Virginia",
-    summary: "Connecting distributed systems with applied machine learning.",
+    summary:
+      "Graduate coursework and research focus in machine learning, distributed systems, and agentic AI workflows.",
     bullets: [
-      "Focus areas include machine learning, agentic AI workflows, MCP, and distributed systems.",
-      "As a Graduate Teaching Assistant, mentored 40+ students in algorithms and mathematical problem-solving.",
+      "Study machine learning methods and distributed systems, with a focus on applying them to reliable agentic workflows.",
+      "Explore Model Context Protocol, retrieval, and tool integration in applied AI systems.",
+      "As a Graduate Teaching Assistant, mentor 40+ students in graph algorithms, probability, complexity analysis, and structured problem-solving.",
     ],
-    link: "gita-guru",
-    related: "Explore applied AI work",
     icon: "G",
+  },
+  {
+    id: "bank-of-america-engineer",
+    company: "Bank of America",
+    role: "Software Engineer",
+    team: "Backend Services & Developer Infrastructure",
+    date: "2017 — 2022",
+    location: "Backend engineering",
+    summary:
+      "Developed concurrent processing, API testing, and production monitoring tools.",
+    bullets: [
+      "Built a concurrent Python interpreter processing 1M+ call logs in under 10 seconds, reducing manual effort by 72%.",
+      "Developed a multiprocessing API load-testing framework for 3,000+ calls, saving approximately 450 engineering hours.",
+      "Built Java and Grafana monitoring dashboards to track transactions and system health, reducing downtime by 70%.",
+    ],
+    icon: "B",
   },
 ];
 export const skillGroups = [
   {
     name: "Languages",
     items: ["Python", "Go", "Java", "TypeScript", "SQL", "C/C++"],
-    detail: "From concurrent workers to typed interfaces.",
+    detail:
+      "Python and Go for distributed processing; Java, TypeScript, and SQL for services and applications.",
   },
   {
-    name: "AI & agents",
+    name: "AI & Agents",
     items: ["Gemini", "LangGraph", "MCP", "ADK", "RAG", "Evals"],
-    detail: "Current focus: grounded, observable agentic workflows.",
+    detail:
+      "Typed extraction, retrieval, tool integration, and evaluations for agent workflows.",
   },
   {
-    name: "Backend & data",
+    name: "Backend & Data",
     items: [
       "FastAPI",
       "Spring Boot",
@@ -264,12 +268,14 @@ export const skillGroups = [
       "Kafka",
       "MySQL",
     ],
-    detail: "APIs, streams, and durable data foundations.",
+    detail:
+      "REST services, event streams, relational storage, and data processing.",
   },
   {
-    name: "Cloud & delivery",
+    name: "Cloud & Delivery",
     items: ["AWS", "GCP", "Docker", "Kubernetes", "CI/CD", "OpenTelemetry"],
-    detail: "Shipping reliably, with visibility built in.",
+    detail:
+      "Container deployment, delivery pipelines, and application telemetry.",
   },
 ];
 export const knowledgeBase = {
@@ -278,5 +284,5 @@ export const knowledgeBase = {
   projects,
   skillGroups,
   sourceNote:
-    "Tesla and current focus supplied by Chetana in the portfolio brief. Bank of America metrics and teaching experience from supplied resume. Project scope from public repository READMEs inspected November 22, 2026. Skills listed as current focus are not claims of production ownership. The PDF predates the supplied Tesla update.",
+    "Professional background and metrics provided by Chetana. Project architecture and scope are maintained with the linked repositories.",
 };
