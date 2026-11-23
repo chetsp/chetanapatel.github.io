@@ -19,7 +19,6 @@ import {
   Menu,
   MessageSquare,
   Network,
-  Send,
   Sparkles,
   X,
 } from "lucide-react";
@@ -31,6 +30,7 @@ import {
   skillGroups,
 } from "@/data/portfolio";
 import Assistant from "./assistant";
+import ContactForm from "./contact-form";
 import ExperienceTimeline from "./experience-timeline";
 type Tour =
   "Explore freely" | "Recruiter" | "Engineering Manager" | "Technical Peer";
@@ -100,7 +100,7 @@ export default function Portfolio() {
   const [skill, setSkill] = useState("");
   const [copied, setCopied] = useState(false);
   const [drawer, setDrawer] = useState(false);
-  const [formStatus, setFormStatus] = useState("");
+  const [copyError, setCopyError] = useState("");
   const [active, setActive] = useState("");
   const close = useRef<HTMLButtonElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -155,7 +155,7 @@ export default function Portfolio() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     } catch {
-      setFormStatus("Copy unavailable. Email: " + profile.email);
+      setCopyError("Copy unavailable. Email: " + profile.email);
     }
   }
   function chooseCategory(category: Category) {
@@ -768,7 +768,7 @@ export default function Portfolio() {
                 </button>
               </div>
               <span className="copy-status" role="status">
-                {copied ? "Email copied to clipboard." : ""}
+                {copied ? "Email copied to clipboard." : copyError}
               </span>
               <div className="social-links">
                 <a href={profile.github} target="_blank" rel="noreferrer">
@@ -788,65 +788,7 @@ export default function Portfolio() {
               </div>
             </Reveal>
             <Reveal>
-              <form
-                className="contact-form panel"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  const data = new FormData(e.currentTarget);
-                  const subject = encodeURIComponent(
-                    "Portfolio enquiry from " + data.get("name"),
-                  );
-                  const body = encodeURIComponent(
-                    `From: ${data.get("name")} (${data.get("email")})\n\n${data.get("message")}`,
-                  );
-                  window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
-                  setFormStatus(
-                    "Your email app has been requested. Send the prepared message there, or email me directly.",
-                  );
-                }}
-              >
-                <span className="tiny-label">SEND A MESSAGE</span>
-                <div className="form-row">
-                  <label>
-                    Your name
-                    <input
-                      name="name"
-                      placeholder="Alex Taylor"
-                      required
-                      maxLength={100}
-                    />
-                  </label>
-                  <label>
-                    Email address
-                    <input
-                      name="email"
-                      type="email"
-                      placeholder="alex@company.com"
-                      required
-                      maxLength={254}
-                    />
-                  </label>
-                </div>
-                <label>
-                  Your message
-                  <textarea
-                    name="message"
-                    placeholder="Tell me about the role, project, or question…"
-                    required
-                    maxLength={3000}
-                    rows={4}
-                  />
-                </label>
-                <button className="button primary" type="submit">
-                  Compose email <Send size={14} />
-                </button>
-                <small>
-                  Opens your email app. No message is stored on this site.
-                </small>
-                <p className="form-status" role="status">
-                  {formStatus}
-                </p>
-              </form>
+              <ContactForm />
             </Reveal>
           </section>
         </main>
