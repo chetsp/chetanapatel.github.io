@@ -42,7 +42,7 @@ The contact section provides a direct email link, copy-email button, LinkedIn, G
 
 ## Content provenance
 
-Professional experience: user-supplied brief and résumé. Project descriptions: public READMEs for `chetsp/RouteMind-AI`, `chetsp/Full-Stack-Student-Survey-Application`, `chetsp/Gita-Guru`, and `chetsp/AI-Modernization`, inspected November 22, 2026. Repository feature descriptions are not independent benchmarks. RouteMind uses synthetic freight data and is separate from Tesla work. MCP, ADK, and OpenTelemetry are labeled as current exploration areas rather than verified production deployments.
+Professional experience: user-supplied brief and résumé. Project descriptions: public READMEs for `chetsp/RouteMind-AI`, `chetsp/Gita-Guru`, and `chetsp/AI-Modernization`, inspected November 22, 2026. Repository feature descriptions are not independent benchmarks. RouteMind uses synthetic freight data and is separate from Tesla work. MCP, ADK, and OpenTelemetry are labeled as current exploration areas rather than verified production deployments.
 
 The reference `https://nikunj.codenex.dev/` was blocked by the environment's network policy; styling follows the written brief rather than a verified visual reproduction.
 

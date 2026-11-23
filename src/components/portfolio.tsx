@@ -224,7 +224,6 @@ export default function Portfolio() {
                     "Agents & MCP",
                     "Product Engineering",
                     "Applied AI",
-                    "Full-Stack",
                   ] as Category[]
                 ).map((p, i) => (
                   <button onClick={() => chooseCategory(p)} key={p}>
@@ -312,7 +311,7 @@ export default function Portfolio() {
                   target: "bank-of-america-senior",
                 },
                 {
-                  value: "4",
+                  value: String(projects.length),
                   label: "Open-source case studies",
                   note: "EXPLORE THE CODE",
                   target: "work",
@@ -423,7 +422,7 @@ export default function Portfolio() {
                   number="03"
                   label="SELECTED WORK"
                   title="Selected Work & Open-Source Projects"
-                  description="Implementation details, architecture decisions, and source code for four projects."
+                  description="Implementation details, architecture decisions, and source code for selected projects."
                 />
                 <a
                   className="inline-link"
@@ -443,7 +442,9 @@ export default function Portfolio() {
                     key={c}
                   >
                     {c}
-                    {c === "All work" && <span>04</span>}
+                    {c === "All work" && (
+                      <span>{String(projects.length).padStart(2, "0")}</span>
+                    )}
                   </button>
                 ))}
               </div>
@@ -492,19 +493,6 @@ export default function Portfolio() {
                               <Sparkles size={12} /> Constraints met{" "}
                               <Check size={12} />
                             </div>
-                          </div>
-                        ) : p.slug === "student-survey" ? (
-                          <div className="stack-visual">
-                            <span>
-                              <Code2 size={14} /> REACT INTERFACE <i />
-                            </span>
-                            <span>
-                              <Braces size={14} /> FASTAPI SERVICES <i />
-                            </span>
-                            <span>
-                              <Database size={14} /> PERSISTENT MYSQL <i />
-                            </span>
-                            <small>DOCKER + KUBERNETES + HELM</small>
                           </div>
                         ) : p.slug === "gita-guru" ? (
                           <div className="language-art">

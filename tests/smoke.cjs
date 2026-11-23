@@ -57,7 +57,7 @@ const staticSite = process.env.STATIC_SITE === "true";
       )),
       `No horizontal overflow at ${width}`,
     );
-    assert.equal(await page.locator(".project-card").count(), 4);
+    assert.equal(await page.locator(".project-card").count(), 3);
     for (const el of await page.locator(".reveal").all())
       assert.equal(
         await el.evaluate((e) => getComputedStyle(e).opacity),
@@ -95,7 +95,6 @@ const staticSite = process.env.STATIC_SITE === "true";
   for (const [category, name] of [
     ["Applied AI", "Gita Guru"],
     ["Product Engineering", "Survey Application Modernization"],
-    ["Full-Stack", "Campus Survey Platform"],
   ]) {
     await page
       .locator(".filters")
@@ -107,7 +106,7 @@ const staticSite = process.env.STATIC_SITE === "true";
     }, name);
   }
   await page.getByRole("button", { name: /All work/ }).click();
-  assert.equal(await page.locator(".project-card").count(), 4);
+  assert.equal(await page.locator(".project-card").count(), 3);
   assert.equal(await page.getByRole("tablist").count(), 0);
   assert.equal(await page.locator(".experience-timeline article").count(), 4);
   for (const role of await page.locator(".experience-timeline article").all()) {
@@ -188,12 +187,7 @@ const staticSite = process.env.STATIC_SITE === "true";
       .count(),
     1,
   );
-  for (const slug of [
-    "routemind-ai",
-    "student-survey",
-    "gita-guru",
-    "ai-modernization",
-  ]) {
+  for (const slug of ["routemind-ai", "gita-guru", "ai-modernization"]) {
     const r = await page.goto(base + "/work/" + slug);
     assert.equal(r.status(), 200);
     assert.equal(await page.locator("h1").count(), 1);

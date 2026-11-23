@@ -145,12 +145,7 @@ const base = (process.env.BASE_URL || "http://127.0.0.1:3000").replace(
     await contrastAudit();
     await page.keyboard.press("Escape");
     await page.getByRole("dialog").waitFor({ state: "detached" });
-    for (const slug of [
-      "routemind-ai",
-      "student-survey",
-      "gita-guru",
-      "ai-modernization",
-    ]) {
+    for (const slug of ["routemind-ai", "gita-guru", "ai-modernization"]) {
       await page.goto(base + "/work/" + slug);
       await page.waitForLoadState("networkidle");
       assert.equal(await page.locator("html").getAttribute("class"), theme);
@@ -167,7 +162,7 @@ const base = (process.env.BASE_URL || "http://127.0.0.1:3000").replace(
       );
       await contrastAudit();
     }
-    console.log(`PASS ${theme}: all four case studies`);
+    console.log(`PASS ${theme}: all case studies`);
     await page.goto(base);
   }
   // Block all hydration bundles: the inline theme script must still apply saved light mode.

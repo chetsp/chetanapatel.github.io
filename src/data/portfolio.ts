@@ -1,9 +1,5 @@
 export type Category =
-  | "All work"
-  | "Agents & MCP"
-  | "Product Engineering"
-  | "Applied AI"
-  | "Full-Stack";
+  "All work" | "Agents & MCP" | "Product Engineering" | "Applied AI";
 export type Project = {
   slug: string;
   name: string;
@@ -38,7 +34,6 @@ export const categories: Category[] = [
   "Agents & MCP",
   "Product Engineering",
   "Applied AI",
-  "Full-Stack",
 ];
 export const projects: Project[] = [
   {
@@ -75,40 +70,6 @@ export const projects: Project[] = [
       "Includes cited carrier-policy answers, a read-only data explorer, and independently verified what-if options.",
     ],
     note: "Uses synthetic carriers, schedules, and prices. Supports planning and comparison; does not book shipments or return live freight quotes.",
-  },
-  {
-    slug: "student-survey",
-    name: "Campus Survey Platform",
-    kicker: "CLOUD-NATIVE FULL STACK",
-    description:
-      "A React frontend backed by FastAPI REST services and persistent MySQL storage, packaged with Docker and deployed to Kubernetes using Helm.",
-    category: "Full-Stack",
-    tags: ["React", "FastAPI", "MySQL", "Docker", "Kubernetes", "Helm"],
-    repo: "https://github.com/chetsp/Full-Stack-Student-Survey-Application",
-    metric: "End to end",
-    metricLabel: "interface → API → infrastructure",
-    color: "blue",
-    problem:
-      "Prospective students need a straightforward way to share campus feedback, while administrators need reliable tools to manage submissions.",
-    architecture: [
-      "React + Vite",
-      "REST API",
-      "FastAPI + SQLModel",
-      "MySQL 8",
-      "Docker images",
-      "Kubernetes + Helm on AWS",
-    ],
-    decisions: [
-      "Separate frontend and API containers so each layer can be deployed independently.",
-      "Use SQLModel and SQLAlchemy for typed persistence with MySQL.",
-      "Describe deployments and services in Helm templates for repeatable Kubernetes releases.",
-    ],
-    outcomes: [
-      "Implements create, read, update, and delete workflows for campus surveys.",
-      "Includes structured form fields, persistent storage, and Swagger API documentation.",
-      "Packages frontend and backend images for deployment to k3s on AWS EC2 using Helm.",
-    ],
-    note: "React frontend and FastAPI backend run as separate containers, with MySQL persistence and Helm-managed Kubernetes deployments.",
   },
   {
     slug: "gita-guru",
