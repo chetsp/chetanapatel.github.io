@@ -758,27 +758,6 @@ em {
   font-size: 10px;
   color: var(--accent-text);
 }
-.bento .principles-panel {
-  grid-column: 1/-1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 19px 27px;
-}
-.principles-panel > div {
-  display: flex;
-  gap: 34px;
-}
-.principles-panel > div > span {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 10px;
-  color: var(--text-secondary);
-}
-.principles-panel svg {
-  color: var(--accent-text);
-}
 .experience-card {
   padding: 30px;
   min-height: 334px;
@@ -1196,69 +1175,6 @@ em {
   font-size: 9px;
 }
 .project-links > a:hover {
-  color: var(--lime);
-}
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 13px;
-}
-.skill-card {
-  padding: 23px 19px;
-  display: flex;
-  flex-direction: column;
-}
-.skill-icon {
-  color: var(--accent-text);
-  margin-bottom: 17px;
-}
-.skill-card h3 {
-  font-size: 13px;
-  font-weight: 500;
-  margin-bottom: 19px;
-}
-.skill-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-content: flex-start;
-  min-height: 100px;
-}
-.skill-buttons > button {
-  font-size: 9px;
-  color: var(--text-secondary);
-  background: var(--surface-raised);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  padding: 4px 7px;
-}
-.skill-buttons > button:hover,
-.skill-buttons > button.chosen {
-  color: var(--lime);
-  border-color: var(--accent-border);
-  background: var(--accent-wash);
-}
-.skill-card p {
-  margin: 17px 0 0;
-  font-size: 9px;
-  line-height: 1.8;
-  color: var(--text-secondary);
-  border-top: 1px solid var(--line);
-  padding-top: 17px;
-}
-.skill-detail {
-  font-size: 10px;
-  line-height: 1.8;
-  color: var(--text-secondary);
-  min-height: 50px;
-  padding: 16px 5px;
-  display: flex;
-  align-items: baseline;
-  gap: 7px;
-  flex-wrap: wrap;
-}
-.skill-detail > a,
-.skill-detail a {
   color: var(--lime);
 }
 .assistant-section {
@@ -1832,12 +1748,6 @@ em {
   .trust-caption {
     display: none;
   }
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .skill-buttons {
-    min-height: 65px;
-  }
   .assistant-section {
     gap: 35px;
   }
@@ -1845,9 +1755,6 @@ em {
   }
   .email-row > a {
     font-size: 13px;
-  }
-  .principles-panel > div {
-    gap: 20px;
   }
   .metric {
     padding: 20px;
@@ -1970,14 +1877,6 @@ em {
   .bento-main h3 {
     font-size: 30px;
     margin: 25px 0 15px;
-  }
-  .bento .principles-panel {
-    display: block;
-  }
-  .principles-panel > div {
-    margin-top: 17px;
-    flex-wrap: wrap;
-    gap: 15px 25px;
   }
   .experience-card {
     padding: 24px;
@@ -2305,9 +2204,6 @@ em {
   .education-year {
     font-size: 9px;
   }
-  .principles-panel > div > span {
-    font-size: 9px;
-  }
   .experience-card {
     padding: 21px;
   }
@@ -2412,29 +2308,6 @@ em {
   }
   .polished > strong {
     font-size: 6px;
-  }
-  .skill-card {
-    padding: 19px 13px;
-  }
-  .skill-card h3 {
-    font-size: 11px;
-  }
-  .skill-buttons {
-    min-height: 115px;
-    gap: 5px;
-  }
-  .skill-buttons > button {
-    font-size: 8px;
-    padding: 4px 6px;
-  }
-  .skill-card p {
-    font-size: 8px;
-  }
-  .skills-grid {
-    gap: 10px;
-  }
-  .skill-detail {
-    font-size: 9px;
   }
   .assistant-copy h2 {
     font-size: 31px;
@@ -2626,23 +2499,6 @@ em {
   background:
     linear-gradient(120deg, var(--glow), transparent 65%), var(--panel);
 }
-.skill-buttons {
-  min-height: 0;
-}
-.skill-buttons > button {
-  font-size: 11px;
-  padding: 6px 9px;
-}
-.skill-card h3 {
-  font-size: 14px;
-}
-.skill-card p {
-  margin-top: auto;
-  padding-top: 18px;
-}
-.skill-buttons {
-  margin-bottom: 20px;
-}
 @media (max-width: 800px) {
   .experience-timeline {
     padding-left: 44px;
@@ -2704,10 +2560,6 @@ em {
   }
   .experience-timeline li {
     font-size: 12px;
-  }
-  .skill-buttons > button {
-    font-size: 10px;
-    padding: 5px 7px;
   }
 }
 
@@ -2858,5 +2710,521 @@ em {
   }
   .logo-george-mason {
     flex-basis: 150px;
+  }
+}
+
+/* Capability layer: brand marks are local SVGs; all architecture colors follow the theme. */
+.capability-pillars {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.capability-card {
+  text-align: left;
+  padding: 24px;
+  min-width: 0;
+  background:
+    linear-gradient(145deg, var(--glow), transparent 70%), var(--panel);
+}
+.capability-card:hover,
+.capability-card.capability-active {
+  border-color: var(--accent-border);
+  box-shadow: 0 8px 28px var(--shadow);
+}
+.capability-card:active {
+  transform: translateY(1px);
+}
+.capability-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  color: var(--accent-text);
+}
+.capability-card-top > span {
+  font-size: 9px;
+  letter-spacing: 1.3px;
+}
+.capability-card-top > svg {
+  opacity: 0.8;
+}
+.capability-card h3 {
+  font-size: 19px;
+  line-height: 1.45;
+  letter-spacing: -0.5px;
+  margin: 14px 0 9px;
+  font-weight: 500;
+}
+.capability-card > p {
+  font-size: 12px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  min-height: 44px;
+}
+.capability-diagram {
+  display: block;
+  width: 100%;
+  height: 160px;
+  margin-top: 20px;
+  color: var(--text-secondary);
+  overflow: visible;
+}
+.diagram-node rect {
+  fill: var(--surface-raised);
+  stroke: var(--line);
+}
+.diagram-node text {
+  fill: var(--text);
+  font:
+    9px "Inter",
+    sans-serif;
+}
+.diagram-node-accent rect {
+  fill: var(--accent-surface);
+  stroke: var(--accent-border);
+}
+.diagram-node-accent text {
+  fill: var(--accent-text);
+}
+.diagram-wire {
+  stroke: var(--accent-text);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+  opacity: 0.8;
+}
+.secondary-wire {
+  stroke: var(--text-secondary);
+  opacity: 0.45;
+}
+.diagram-signal {
+  fill: var(--lime);
+}
+.diagram-caption {
+  fill: var(--text-secondary);
+  font:
+    8px "Inter",
+    sans-serif;
+}
+.diagram-window > rect:first-child,
+.diagram-cluster {
+  fill: var(--bg);
+  stroke: var(--line);
+}
+.diagram-window path {
+  stroke: var(--line);
+}
+.diagram-window circle {
+  fill: var(--text-secondary);
+}
+.diagram-window rect:not(:first-child) {
+  fill: var(--accent-surface);
+  stroke: var(--accent-border);
+}
+.diagram-storage {
+  fill: var(--accent-surface);
+  stroke: var(--accent-border);
+}
+.diagram-chart {
+  stroke: var(--accent-text);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.capability-card:hover .diagram-wire {
+  animation: diagram-flow 2s linear infinite;
+}
+@keyframes diagram-flow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+.capability-icons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+.tool-mark {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-raised);
+  color: var(--text);
+}
+.tool-mark img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+.dark .tool-brand-svg {
+  filter: invert(1);
+}
+.light .tool-brand-svg {
+  filter: none;
+}
+.tool-mark-compact {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+}
+.tool-mark-compact img {
+  width: 16px;
+  height: 16px;
+}
+.capability-count {
+  display: block;
+  font-size: 8px;
+  color: var(--text-secondary);
+  margin-left: auto;
+  padding: 5px 0 5px 5px;
+}
+.tools-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 44px 0 9px;
+}
+.tools-heading h3 {
+  font-size: 22px;
+  margin: 10px 0 0;
+  font-weight: 500;
+  letter-spacing: -0.6px;
+}
+.all-tools {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 8px 13px;
+  font-size: 10px;
+  white-space: nowrap;
+  background: var(--panel);
+}
+.all-tools.selected {
+  color: var(--accent-text);
+  border-color: var(--accent-border);
+  background: var(--accent-surface);
+}
+.all-tools > span {
+  border-radius: 3px;
+  padding: 1px 5px;
+  background: var(--surface-raised);
+}
+.tools-instruction {
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 22px;
+}
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+.tool-tile {
+  position: relative;
+  text-align: left;
+  padding: 17px 14px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.tool-tile:hover,
+.tool-tile.tool-selected {
+  border-color: var(--accent-border);
+  background: var(--accent-wash);
+}
+.tool-name {
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 13px;
+  color: var(--text);
+  line-height: 1.5;
+}
+.tool-experience {
+  margin-top: 5px;
+  font-size: 8px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.tool-selected-check {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  color: var(--accent-text);
+  opacity: 0;
+}
+.tool-selected .tool-selected-check {
+  opacity: 1;
+}
+.tool-proof {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 32px;
+  margin-top: 24px;
+  padding: 28px;
+  border-color: var(--accent-border);
+  scroll-margin-top: 115px;
+}
+.proof-tool-name {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0 13px;
+}
+.proof-tool-name h3 {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: -0.6px;
+}
+.proof-experience {
+  display: inline-block;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: var(--accent-surface);
+  color: var(--accent-text);
+  font-size: 9px;
+  border: 1px solid var(--accent-border);
+}
+.proof-tool > p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  margin: 16px 0 18px;
+}
+.proof-scope {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.proof-entries {
+  display: grid;
+  gap: 14px;
+}
+.proof-entry {
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  border-radius: 8px;
+}
+.proof-kind {
+  font-size: 8px;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+.proof-entry h4 {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.65;
+  margin: 8px 0;
+}
+.proof-entry p {
+  font-size: 11px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  margin-bottom: 13px;
+}
+.proof-entry a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--accent-text);
+  font-size: 10px;
+  font-weight: 500;
+}
+.proof-entry a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.engineering-principles {
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  margin-top: 13px;
+}
+.principles-heading {
+  grid-column: 1/-1;
+  margin-bottom: 0;
+}
+.principle-card {
+  padding: 23px;
+}
+.principle-card > svg {
+  color: var(--accent-text);
+  margin-bottom: 18px;
+}
+.principle-card h3 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.principle-card p {
+  margin-bottom: 0;
+  font-size: 11px;
+  line-height: 1.9;
+}
+.experience-timeline {
+  padding-left: 90px;
+}
+.experience-timeline::before {
+  left: 33px;
+}
+.timeline-marker {
+  width: 66px;
+  height: 48px;
+  left: -90px;
+  padding: 7px;
+  background: var(--logo-surface);
+  border-color: var(--line);
+}
+.timeline-marker img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@media (max-width: 1100px) {
+  .tool-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (max-width: 800px) {
+  .capability-card {
+    padding: 20px;
+  }
+  .capability-card h3 {
+    font-size: 17px;
+  }
+  .capability-diagram {
+    height: 140px;
+  }
+  .capability-count {
+    width: 100%;
+    padding-left: 0;
+    margin: 0;
+  }
+  .tool-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .engineering-principles {
+    grid-template-columns: 1fr;
+  }
+  .principle-card {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 0 15px;
+    padding: 20px;
+  }
+  .principle-card > svg {
+    grid-row: span 2;
+    margin: 4px 0 0;
+  }
+  .principle-card p {
+    grid-column: 2;
+  }
+  .principle-card h3 {
+    margin: 0 0 8px;
+  }
+  .tool-proof {
+    gap: 22px;
+    padding: 23px;
+  }
+  .experience-timeline {
+    padding-left: 67px;
+  }
+  .experience-timeline::before {
+    left: 23px;
+  }
+  .timeline-marker {
+    left: -67px;
+    width: 46px;
+    height: 40px;
+    padding: 5px;
+  }
+}
+@media (max-width: 600px) {
+  .capability-pillars {
+    grid-template-columns: 1fr;
+  }
+  .capability-diagram {
+    height: 160px;
+  }
+  .capability-card > p {
+    min-height: 0;
+  }
+  .capability-count {
+    width: auto;
+    margin-left: auto;
+  }
+  .tool-proof {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 480px) {
+  .tool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  .tool-tile {
+    padding: 15px 12px;
+  }
+  .tool-name {
+    font-size: 11px;
+  }
+  .tools-heading h3 {
+    font-size: 19px;
+  }
+  .capability-card {
+    padding: 19px;
+  }
+  .capability-card h3 {
+    font-size: 19px;
+  }
+  .capability-card-top > span {
+    font-size: 8px;
+  }
+  .capability-count {
+    width: 100%;
+    margin-left: 0;
+  }
+  .experience-timeline {
+    padding-left: 52px;
+  }
+  .experience-timeline::before {
+    left: 18px;
+  }
+  .timeline-marker {
+    left: -52px;
+    width: 37px;
+    height: 34px;
+    padding: 4px;
+  }
+  .experience-timeline .experience-card {
+    padding: 15px;
+  }
+  .tool-proof {
+    padding: 20px;
+  }
+  .proof-entry {
+    padding: 16px;
   }
 }

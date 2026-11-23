@@ -10,7 +10,8 @@
     "test:smoke": "node tests/smoke.cjs",
     "format": "prettier --write src tests README.md",
     "lint": "eslint src next.config.ts --max-warnings=0",
-    "test:themes": "node tests/themes.cjs"
+    "test:themes": "node tests/themes.cjs",
+    "test:capabilities": "node tests/capabilities.cjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.0",

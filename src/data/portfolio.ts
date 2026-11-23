@@ -22,7 +22,7 @@ export const profile = {
   shortName: "Chetana Patel",
   title: "Software & Applied AI Engineer",
   tagline:
-    "I build high-throughput financial data platforms and reliable agentic workflows—from processing 55M+ daily calculations at Bank of America to shipping conversational logistics agents.",
+    "8+ years scaling mission-critical financial platforms at Bank of America, now building production AI agents and factory software.",
   location: "Northern Virginia / Washington, D.C.",
   email: "patelkchetana@gmail.com",
   github: "https://github.com/chetsp",
@@ -153,7 +153,7 @@ export const experience = [
       "Designed a conversational AI assistant for Carrier Rate Creation, with structured validation of required inputs before changes could proceed.",
       "Included human-in-the-loop safeguards so users could review proposed actions and resolve incomplete requests.",
     ],
-    icon: "T",
+    logo: "tesla",
   },
   {
     id: "george-mason",
@@ -169,7 +169,7 @@ export const experience = [
       "Explore Model Context Protocol, retrieval, and tool integration in applied AI systems.",
       "As a Graduate Teaching Assistant, mentor 40+ students in graph algorithms, probability, complexity analysis, and structured problem-solving.",
     ],
-    icon: "G",
+    logo: "george-mason",
   },
   {
     id: "bank-of-america-senior",
@@ -187,7 +187,7 @@ export const experience = [
       "Redesigned Margin Call Processing with event-driven microservices handling 10M+ financial contract calculations per day, delivering margin calls 6 hours sooner and removing 10 hours of daily manual review.",
       "Integrated Docker-based CI/CD with AWS and GCP deployments, accelerating releases by 40% and reducing manual intervention by 50%.",
     ],
-    icon: "B",
+    logo: "bank-of-america",
   },
   {
     id: "bank-of-america-engineer",
@@ -203,47 +203,760 @@ export const experience = [
       "Developed a multiprocessing API load-testing framework for 3,000+ calls, saving approximately 450 engineering hours.",
       "Built Java and Grafana monitoring dashboards to track transactions and system health, reducing downtime by 70%.",
     ],
-    icon: "B",
+    logo: "bank-of-america",
   },
 ];
-export const skillGroups = [
+export type CapabilityId = "agents" | "systems" | "product" | "cloud";
+export type ToolProof = {
+  kind: string;
+  title: string;
+  detail: string;
+  href: string;
+  linkLabel: string;
+};
+export type Tool = {
+  id: string;
+  name: string;
+  pillar: CapabilityId;
+  logo?: string;
+  symbol?: "retrieval" | "checks" | "schedule" | "database";
+  badge: string;
+  summary: string;
+  proof: ToolProof[];
+};
+export type Capability = {
+  id: CapabilityId;
+  title: string;
+  label: string;
+  description: string;
+  diagram: CapabilityId;
+  toolIds: string[];
+};
+export const tools: Tool[] = [
   {
-    name: "Languages",
-    items: ["Python", "Go", "Java", "TypeScript", "SQL", "C/C++"],
-    detail:
-      "Python and Go for distributed processing; Java, TypeScript, and SQL for services and applications.",
-  },
-  {
-    name: "AI & Agents",
-    items: ["Gemini", "LangGraph", "MCP", "ADK", "RAG", "Evals"],
-    detail:
-      "Typed extraction, retrieval, tool integration, and evaluations for agent workflows.",
-  },
-  {
-    name: "Backend & Data",
-    items: [
-      "FastAPI",
-      "Spring Boot",
-      "Node.js",
-      "PostgreSQL",
-      "Kafka",
-      "MySQL",
+    id: "gemini",
+    name: "Gemini",
+    pillar: "agents",
+    badge: "Agent Stack",
+    summary: "Typed language extraction for shipment requirements.",
+    proof: [
+      {
+        kind: "Case study",
+        title: "RouteMind AI",
+        detail:
+          "Optional Gemini provider for PydanticAI extraction; route feasibility is checked separately by the deterministic optimizer.",
+        href: "/work/routemind-ai",
+        linkLabel: "Read architecture",
+      },
     ],
-    detail:
-      "REST services, event streams, relational storage, and data processing.",
+    logo: "googlegemini",
   },
   {
-    name: "Cloud & Delivery",
-    items: ["AWS", "GCP", "Docker", "Kubernetes", "CI/CD", "OpenTelemetry"],
-    detail:
-      "Container deployment, delivery pipelines, and application telemetry.",
+    id: "claude",
+    name: "Claude",
+    pillar: "agents",
+    badge: "Project · Gita Guru",
+    summary: "Multilingual explanations and learning activities.",
+    proof: [
+      {
+        kind: "Case study",
+        title: "Gita Guru",
+        detail:
+          "Claude generates verse explanations, analogies, and story panels for a multilingual learning interface.",
+        href: "/work/gita-guru",
+        linkLabel: "Read case study",
+      },
+    ],
+    logo: "claude",
+  },
+  {
+    id: "langgraph",
+    name: "LangGraph",
+    pillar: "agents",
+    badge: "Agent Stack",
+    summary: "Persistent orchestration across clarification and planning.",
+    proof: [
+      {
+        kind: "Case study",
+        title: "RouteMind AI",
+        detail:
+          "Graph orchestration and a SQLite checkpointer preserve request state. Revisions create linked requests rather than overwriting earlier plans.",
+        href: "/work/routemind-ai",
+        linkLabel: "Read architecture",
+      },
+    ],
+    logo: "langgraph",
+  },
+  {
+    id: "pydanticai",
+    name: "PydanticAI",
+    pillar: "agents",
+    badge: "Agent Stack",
+    summary: "Typed extraction with validated model outputs.",
+    proof: [
+      {
+        kind: "Case study",
+        title: "RouteMind AI",
+        detail:
+          "A typed extraction contract translates language into shipment constraints before deterministic optimization.",
+        href: "/work/routemind-ai",
+        linkLabel: "Read architecture",
+      },
+    ],
+    logo: "pydantic",
+  },
+  {
+    id: "mcp",
+    name: "MCP",
+    pillar: "agents",
+    badge: "Tesla",
+    summary: "Tool boundaries for enterprise integrations.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Tesla · Factory Software Team",
+        detail:
+          "Logistics AI integration connected agents to enterprise APIs, SQL data, and tools through MCP, with validation and human review for operational actions.",
+        href: "#tesla",
+        linkLabel: "View Tesla experience",
+      },
+    ],
+    logo: "modelcontextprotocol",
+  },
+  {
+    id: "adk",
+    name: "Google ADK",
+    pillar: "agents",
+    badge: "Exploration",
+    summary: "Evaluating Google ADK for tool-based agent orchestration.",
+    proof: [
+      {
+        kind: "Exploration",
+        title: "Agent orchestration research",
+        detail:
+          "Current exploration focus. RouteMind uses LangGraph and PydanticAI; it is a related architecture reference, not an ADK implementation.",
+        href: "/work/routemind-ai",
+        linkLabel: "Related architecture",
+      },
+    ],
+    logo: "google",
+  },
+  {
+    id: "rag",
+    name: "RAG",
+    pillar: "agents",
+    badge: "Agent Stack",
+    summary: "Retrieve carrier evidence before explaining a plan.",
+    proof: [
+      {
+        kind: "Case study",
+        title: "RouteMind AI",
+        detail:
+          "Chroma semantic retrieval and BM25 rank carrier-document evidence; answers cite retrieved passages.",
+        href: "/work/routemind-ai",
+        linkLabel: "Read architecture",
+      },
+    ],
+    symbol: "retrieval",
+  },
+  {
+    id: "evals",
+    name: "Evals",
+    pillar: "agents",
+    badge: "Agent Stack",
+    summary: "Check extraction, retrieval, and constraint behavior.",
+    proof: [
+      {
+        kind: "Case study",
+        title: "RouteMind AI",
+        detail:
+          "Quality and behavior evaluations cover planning constraints, parser behavior, and evidence retrieval in the demo.",
+        href: "/work/routemind-ai",
+        linkLabel: "Read architecture",
+      },
+    ],
+    symbol: "checks",
+  },
+  {
+    id: "python",
+    name: "Python",
+    pillar: "systems",
+    badge: "Production · BofA",
+    summary: "Distributed orchestration, processing, and API services.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Bank of America · Senior Software Engineer",
+        detail:
+          "Python orchestration and a Linux processing framework supported 55M+ daily financial calculations.",
+        href: "#bank-of-america-senior",
+        linkLabel: "View experience",
+      },
+      {
+        kind: "Case study",
+        title: "RouteMind AI",
+        detail:
+          "FastAPI services, typed request handling, and the routing optimizer are implemented in Python.",
+        href: "/work/routemind-ai",
+        linkLabel: "Read architecture",
+      },
+    ],
+    logo: "python",
+  },
+  {
+    id: "go",
+    name: "Go",
+    pillar: "systems",
+    badge: "Production · BofA",
+    summary: "Concurrent workers for distributed task execution.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Bank of America · Senior Software Engineer",
+        detail:
+          "Go workers paired with Python orchestration improved task throughput by approximately 52%.",
+        href: "#bank-of-america-senior",
+        linkLabel: "View experience",
+      },
+    ],
+    logo: "go",
+  },
+  {
+    id: "java",
+    name: "Java",
+    pillar: "systems",
+    badge: "Production · BofA",
+    summary: "Transaction monitoring and backend engineering.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Bank of America · Software Engineer",
+        detail:
+          "Java and Grafana dashboards tracked transactions and system health to support earlier problem detection.",
+        href: "#bank-of-america-engineer",
+        linkLabel: "View experience",
+      },
+    ],
+    logo: "java",
+  },
+  {
+    id: "kafka",
+    name: "Kafka",
+    pillar: "systems",
+    badge: "Production · BofA",
+    summary: "Event streams for financial calculation workflows.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Bank of America · Senior Software Engineer",
+        detail:
+          "Kafka event streams and REST APIs replaced legacy messaging, improving performance by 85% and saving $800K annually.",
+        href: "#bank-of-america-senior",
+        linkLabel: "View experience",
+      },
+    ],
+    logo: "apachekafka",
+  },
+  {
+    id: "scheduling",
+    name: "Distributed Scheduling",
+    pillar: "systems",
+    badge: "Production · BofA",
+    summary: "Queue work, coordinate workers, and handle failures.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Bank of America · Senior Software Engineer",
+        detail:
+          "A distributed scheduler coordinated Go workers through Python orchestration and monitoring for fault-tolerant task execution.",
+        href: "#bank-of-america-senior",
+        linkLabel: "View experience",
+      },
+    ],
+    symbol: "schedule",
+  },
+  {
+    id: "cplusplus",
+    name: "C/C++",
+    pillar: "systems",
+    badge: "Engineering toolkit",
+    summary: "Systems programming and concurrency foundations.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Engineering foundations",
+        detail:
+          "C/C++ is part of the technical toolkit; see the experience section for the distributed processing work built primarily with Python and Go.",
+        href: "#bank-of-america-engineer",
+        linkLabel: "Engineering background",
+      },
+    ],
+    logo: "cplusplus",
+  },
+  {
+    id: "typescript",
+    name: "TypeScript",
+    pillar: "product",
+    badge: "Product Engineering",
+    summary: "Typed interfaces and component contracts.",
+    proof: [
+      {
+        kind: "Case study",
+        title: "Survey Application Modernization",
+        detail:
+          "TypeScript connects the React interface, routes, form state, and API calls.",
+        href: "/work/ai-modernization",
+        linkLabel: "Read case study",
+      },
+      {
+        kind: "Portfolio",
+        title: "This portfolio",
+        detail:
+          "The App Router, portfolio data model, and components use strict TypeScript.",
+        href: "#home",
+        linkLabel: "View portfolio",
+      },
+    ],
+    logo: "typescript",
+  },
+  {
+    id: "react",
+    name: "React",
+    pillar: "product",
+    badge: "Product Engineering",
+    summary: "Interactive form flows and reusable UI components.",
+    proof: [
+      {
+        kind: "Case study",
+        title: "Survey Application Modernization",
+        detail:
+          "Controlled inputs, live validation, and API-backed survey management turn the static design into a usable interface.",
+        href: "/work/ai-modernization",
+        linkLabel: "Read case study",
+      },
+    ],
+    logo: "react",
+  },
+  {
+    id: "nextjs",
+    name: "Next.js",
+    pillar: "product",
+    badge: "Portfolio",
+    summary: "App Router pages, metadata, and static case studies.",
+    proof: [
+      {
+        kind: "Portfolio",
+        title: "This portfolio",
+        detail:
+          "Static GitHub Pages export serves the site and generated case studies. A server deployment also supports the chat API.",
+        href: "#home",
+        linkLabel: "View portfolio",
+      },
+    ],
+    logo: "nextdotjs",
+  },
+  {
+    id: "fastapi",
+    name: "FastAPI",
+    pillar: "product",
+    badge: "Agent Stack",
+    summary: "Validated REST services for application workflows.",
+    proof: [
+      {
+        kind: "Case study",
+        title: "RouteMind AI",
+        detail:
+          "FastAPI exposes shipment planning, request revision, and readiness endpoints.",
+        href: "/work/routemind-ai",
+        linkLabel: "Read architecture",
+      },
+      {
+        kind: "Case study",
+        title: "Survey Application Modernization",
+        detail:
+          "FastAPI and SQLModel provide persistent CRUD endpoints for the React application.",
+        href: "/work/ai-modernization",
+        linkLabel: "Read case study",
+      },
+    ],
+    logo: "fastapi",
+  },
+  {
+    id: "nodejs",
+    name: "Node.js",
+    pillar: "product",
+    badge: "Portfolio",
+    summary: "Next.js runtime and application tooling.",
+    proof: [
+      {
+        kind: "Portfolio",
+        title: "This portfolio",
+        detail:
+          "Node.js runs the build toolchain and the optional Next.js server-side assistant route.",
+        href: "#home",
+        linkLabel: "View portfolio",
+      },
+    ],
+    logo: "nodedotjs",
+  },
+  {
+    id: "tailwind",
+    name: "Tailwind CSS",
+    pillar: "product",
+    badge: "Product Engineering",
+    summary: "Shared styling and responsive interface implementation.",
+    proof: [
+      {
+        kind: "Case study",
+        title: "Survey Application Modernization",
+        detail:
+          "Tailwind supports the React implementation of the university design system.",
+        href: "/work/ai-modernization",
+        linkLabel: "Read case study",
+      },
+    ],
+    logo: "tailwindcss",
+  },
+  {
+    id: "spring",
+    name: "Spring Boot",
+    pillar: "product",
+    badge: "Study & comparison",
+    summary: "Comparing backend implementation patterns.",
+    proof: [
+      {
+        kind: "Exploration",
+        title: "Backend framework comparison",
+        detail:
+          "Spring Boot is part of the broader study toolkit. The linked modernization project implements its backend in FastAPI, not Spring Boot.",
+        href: "/work/ai-modernization",
+        linkLabel: "Related REST architecture",
+      },
+    ],
+    logo: "spring",
+  },
+  {
+    id: "aws",
+    name: "AWS",
+    pillar: "cloud",
+    badge: "Production · BofA",
+    summary: "Cloud deployments with container-based delivery.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Bank of America · Senior Software Engineer",
+        detail:
+          "AWS cloud solutions integrated Docker-based CI/CD to accelerate deployments and reduce manual intervention.",
+        href: "#bank-of-america-senior",
+        linkLabel: "View experience",
+      },
+    ],
+    logo: "amazonwebservices",
+  },
+  {
+    id: "gcp",
+    name: "GCP",
+    pillar: "cloud",
+    badge: "Production · BofA",
+    summary: "Cloud application delivery and infrastructure.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Bank of America · Senior Software Engineer",
+        detail:
+          "GCP deployments were part of the cloud delivery work alongside AWS and Docker-based pipelines.",
+        href: "#bank-of-america-senior",
+        linkLabel: "View experience",
+      },
+    ],
+    logo: "googlecloud",
+  },
+  {
+    id: "docker",
+    name: "Docker",
+    pillar: "cloud",
+    badge: "Production · BofA",
+    summary: "Reproducible application and service packaging.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Bank of America · Senior Software Engineer",
+        detail: "Docker-based CI/CD accelerated deployments by 40%.",
+        href: "#bank-of-america-senior",
+        linkLabel: "View experience",
+      },
+      {
+        kind: "Case study",
+        title: "RouteMind AI",
+        detail:
+          "Docker Compose packages the API, PostgreSQL, embeddings, and persistent local state.",
+        href: "/work/routemind-ai",
+        linkLabel: "Read architecture",
+      },
+    ],
+    logo: "docker",
+  },
+  {
+    id: "kubernetes",
+    name: "Kubernetes",
+    pillar: "cloud",
+    badge: "Academic deployment",
+    summary: "Container orchestration with declared services.",
+    proof: [
+      {
+        kind: "Repository",
+        title: "Kubernetes survey deployment",
+        detail:
+          "The academic survey application deploys separate frontend and API containers to k3s on AWS EC2.",
+        href: "https://github.com/chetsp/Full-Stack-Student-Survey-Application",
+        linkLabel: "View repository",
+      },
+    ],
+    logo: "kubernetes",
+  },
+  {
+    id: "helm",
+    name: "Helm",
+    pillar: "cloud",
+    badge: "Academic deployment",
+    summary: "Repeatable Kubernetes deployment configuration.",
+    proof: [
+      {
+        kind: "Repository",
+        title: "Kubernetes survey deployment",
+        detail:
+          "Helm templates describe frontend and backend deployments, configuration, and services.",
+        href: "https://github.com/chetsp/Full-Stack-Student-Survey-Application",
+        linkLabel: "View repository",
+      },
+    ],
+    logo: "helm",
+  },
+  {
+    id: "postgresql",
+    name: "PostgreSQL",
+    pillar: "cloud",
+    badge: "Project · RouteMind",
+    summary: "Durable relational storage for planning data.",
+    proof: [
+      {
+        kind: "Case study",
+        title: "RouteMind AI",
+        detail:
+          "The Docker deployment uses PostgreSQL 17 for schedules, carrier data, and externally visible planning results.",
+        href: "/work/routemind-ai",
+        linkLabel: "Read architecture",
+      },
+    ],
+    logo: "postgresql",
+  },
+  {
+    id: "mysql",
+    name: "MySQL",
+    pillar: "cloud",
+    badge: "Academic deployment",
+    summary: "Persistent relational storage behind CRUD APIs.",
+    proof: [
+      {
+        kind: "Repository",
+        title: "Kubernetes survey deployment",
+        detail:
+          "MySQL 8 stores survey submissions through SQLModel and SQLAlchemy.",
+        href: "https://github.com/chetsp/Full-Stack-Student-Survey-Application",
+        linkLabel: "View repository",
+      },
+    ],
+    logo: "mysql",
+  },
+  {
+    id: "opentelemetry",
+    name: "OpenTelemetry",
+    pillar: "cloud",
+    badge: "Exploration",
+    summary: "Exploring traces, metrics, and telemetry conventions.",
+    proof: [
+      {
+        kind: "Exploration",
+        title: "Observability focus",
+        detail:
+          "Exploring distributed tracing and telemetry conventions. The related production monitoring work used Java and Grafana.",
+        href: "#bank-of-america-engineer",
+        linkLabel: "Related monitoring experience",
+      },
+    ],
+    logo: "opentelemetry",
+  },
+  {
+    id: "grafana",
+    name: "Grafana",
+    pillar: "cloud",
+    badge: "Production · BofA",
+    summary: "Operational dashboards for transactions and health.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Bank of America · Software Engineer",
+        detail:
+          "Built Java and Grafana monitoring dashboards, reducing system downtime by 70%.",
+        href: "#bank-of-america-engineer",
+        linkLabel: "View experience",
+      },
+    ],
+    logo: "grafana",
+  },
+  {
+    id: "sql",
+    name: "SQL",
+    pillar: "cloud",
+    badge: "Tesla · Data",
+    summary: "Structured queries and durable application data.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Tesla · Logistics AI",
+        detail:
+          "Enterprise integration connected agents to SQL databases and operational APIs.",
+        href: "#tesla",
+        linkLabel: "View experience",
+      },
+      {
+        kind: "Case study",
+        title: "RouteMind AI",
+        detail:
+          "Relational constraints and carrier capability flags remain authoritative for route eligibility.",
+        href: "/work/routemind-ai",
+        linkLabel: "Read architecture",
+      },
+    ],
+    symbol: "database",
+  },
+  {
+    id: "cicd",
+    name: "CI/CD",
+    pillar: "cloud",
+    badge: "Production · BofA",
+    summary: "Automated build and release workflows.",
+    proof: [
+      {
+        kind: "Experience",
+        title: "Bank of America · Senior Software Engineer",
+        detail: "Container-based delivery reduced manual intervention by 50%.",
+        href: "#bank-of-america-senior",
+        linkLabel: "View experience",
+      },
+      {
+        kind: "Portfolio",
+        title: "This portfolio",
+        detail:
+          "GitHub Actions builds, lints, and deploys the static portfolio to Pages.",
+        href: "#home",
+        linkLabel: "View portfolio",
+      },
+    ],
+    logo: "githubactions",
   },
 ];
+export const capabilities: Capability[] = [
+  {
+    id: "agents",
+    title: "Agentic AI & Orchestration",
+    label: "01 / AGENT WORKFLOWS",
+    description:
+      "Typed extraction, stateful orchestration, retrieval, and review boundaries.",
+    diagram: "agents",
+    toolIds: [
+      "gemini",
+      "claude",
+      "langgraph",
+      "pydanticai",
+      "mcp",
+      "adk",
+      "rag",
+      "evals",
+    ],
+  },
+  {
+    id: "systems",
+    title: "High-Throughput Distributed Systems",
+    label: "02 / PROCESSING AT SCALE",
+    description:
+      "Concurrent workers, scheduling, and event streams for financial processing.",
+    diagram: "systems",
+    toolIds: ["python", "go", "java", "kafka", "scheduling", "cplusplus"],
+  },
+  {
+    id: "product",
+    title: "Full-Stack & Product Engineering",
+    label: "03 / APPLICATION DELIVERY",
+    description:
+      "Typed interfaces connected to validated APIs and persistent application state.",
+    diagram: "product",
+    toolIds: [
+      "typescript",
+      "react",
+      "nextjs",
+      "fastapi",
+      "nodejs",
+      "tailwind",
+      "spring",
+    ],
+  },
+  {
+    id: "cloud",
+    title: "Cloud, Data & Observability",
+    label: "04 / OPERATIONS & DATA",
+    description:
+      "Container packaging, relational storage, orchestration, and monitoring.",
+    diagram: "cloud",
+    toolIds: [
+      "aws",
+      "gcp",
+      "docker",
+      "kubernetes",
+      "helm",
+      "postgresql",
+      "mysql",
+      "opentelemetry",
+      "grafana",
+      "sql",
+      "cicd",
+    ],
+  },
+];
+export const engineeringPrinciples = [
+  {
+    id: "reliability",
+    title: "Deterministic Reliability",
+    detail: "55M+ daily financial calculations with strict data contracts.",
+  },
+  {
+    id: "governance",
+    title: "Governed Agentic AI",
+    detail:
+      "Typed inputs, Pydantic validation, MCP tool boundaries, and human-in-the-loop review.",
+  },
+  {
+    id: "ownership",
+    title: "End-to-End Ownership",
+    detail:
+      "Architecture, distributed backends, telemetry, and production operations.",
+  },
+];
+export const skillGroups = capabilities.map((capability) => ({
+  name: capability.title,
+  items: tools
+    .filter((tool) => tool.pillar === capability.id)
+    .map((tool) => tool.name),
+  detail: capability.description,
+}));
 export const knowledgeBase = {
   profile,
   experience,
   projects,
   skillGroups,
+  tools,
+  capabilities,
+  engineeringPrinciples,
   sourceNote:
     "Professional background and metrics provided by Chetana. Project architecture and scope are maintained with the linked repositories.",
 };

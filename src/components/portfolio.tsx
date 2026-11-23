@@ -20,17 +20,13 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import {
-  categories,
-  Category,
-  profile,
-  projects,
-  skillGroups,
-} from "@/data/portfolio";
+import { categories, Category, profile, projects } from "@/data/portfolio";
 import Assistant from "./assistant";
 import ThemeToggle from "./theme-toggle";
 import ExperienceTimeline from "./experience-timeline";
 import ExperienceLogos from "./experience-logos";
+import Capabilities from "./capabilities";
+import EngineeringPrinciples from "./engineering-principles";
 const nav = ["About", "Experience", "Work", "Skills", "Assistant", "Contact"];
 function SectionTitle({
   number,
@@ -75,7 +71,6 @@ function Reveal({
 export default function Portfolio() {
   const [menu, setMenu] = useState(false);
   const [filter, setFilter] = useState<Category>("All work");
-  const [skill, setSkill] = useState("");
   const [copied, setCopied] = useState(false);
   const [drawer, setDrawer] = useState(false);
   const [copyError, setCopyError] = useState("");
@@ -381,20 +376,7 @@ export default function Portfolio() {
                 </div>
                 <span className="education-year">2026</span>
               </article>
-              <article className="panel principles-panel">
-                <span className="tiny-label">WORKING PRACTICES</span>
-                <div>
-                  <span>
-                    <Check size={14} /> Follow through from design to operations
-                  </span>
-                  <span>
-                    <Check size={14} /> Validate inputs and failure cases
-                  </span>
-                  <span>
-                    <Check size={14} /> Document interfaces and decisions
-                  </span>
-                </div>
-              </article>
+              <EngineeringPrinciples />
             </Reveal>
           </section>
           <section id="experience" className="section wrap">
@@ -554,79 +536,11 @@ export default function Portfolio() {
               <SectionTitle
                 number="04"
                 label="THE TOOLKIT"
-                title="Technical Stack"
-                description="Languages, frameworks, and infrastructure used across my work and current technical focus."
+                title="Tools, Skills & Capabilities"
+                description="Four areas of engineering practice, with the tools and implementation details behind them."
               />
             </Reveal>
-            <div className="skills-grid">
-              {skillGroups.map((g, i) => (
-                <article className="panel skill-card" key={g.name}>
-                  <span className="skill-icon">
-                    {i === 0 ? (
-                      <Code2 size={20} />
-                    ) : i === 1 ? (
-                      <Sparkles size={20} />
-                    ) : i === 2 ? (
-                      <Database size={20} />
-                    ) : (
-                      <Network size={20} />
-                    )}
-                  </span>
-                  <h3>{g.name}</h3>
-                  <div className="skill-buttons">
-                    {g.items.map((s) => (
-                      <button
-                        className={skill === s ? "chosen" : ""}
-                        aria-pressed={skill === s}
-                        key={s}
-                        onClick={() => setSkill(skill === s ? "" : s)}
-                      >
-                        {s}
-                      </button>
-                    ))}
-                  </div>
-                  <p>{g.detail}</p>
-                </article>
-              ))}
-            </div>
-            <div className="skill-detail" aria-live="polite">
-              {skill ? (
-                <>
-                  <span className="status-dot" />
-                  <strong>{skill}</strong> —{" "}
-                  {["MCP", "ADK", "OpenTelemetry"].includes(skill) ? (
-                    "Current focus: tool integration, agent workflows, and observability."
-                  ) : projects.filter((p) =>
-                      p.tags.some((t) =>
-                        t.toLowerCase().includes(skill.toLowerCase()),
-                      ),
-                    ).length ? (
-                    <>
-                      Explore{" "}
-                      {projects
-                        .filter((p) =>
-                          p.tags.some((t) =>
-                            t.toLowerCase().includes(skill.toLowerCase()),
-                          ),
-                        )
-                        .map((p, i) => (
-                          <span key={p.slug}>
-                            {i > 0 ? " · " : ""}
-                            <Link href={`/work/${p.slug}`}>{p.name} ↗</Link>
-                          </span>
-                        ))}
-                    </>
-                  ) : (
-                    "Used across backend engineering and infrastructure work. See the experience section for context."
-                  )}
-                </>
-              ) : (
-                <>
-                  <ArrowRight size={12} /> Select a technology to see related
-                  projects and experience.
-                </>
-              )}
-            </div>
+            <Capabilities />
           </section>
           <section id="assistant" className="section wrap assistant-section">
             <Reveal className="assistant-copy">

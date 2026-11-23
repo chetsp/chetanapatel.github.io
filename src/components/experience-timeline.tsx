@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight, MapPin } from "lucide-react";
 import { experience } from "@/data/portfolio";
 
@@ -26,7 +27,13 @@ export default function ExperienceTimeline() {
           aria-labelledby={`${entry.id}-title`}
         >
           <div className="timeline-marker" aria-hidden="true">
-            {entry.icon}
+            <Image
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logos/${entry.logo}.svg`}
+              alt=""
+              width={64}
+              height={30}
+              unoptimized
+            />
           </div>
           <div className="role-top">
             <span className="experience-company">{entry.company}</span>

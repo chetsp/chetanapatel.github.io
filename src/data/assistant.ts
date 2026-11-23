@@ -1,4 +1,4 @@
-import { experience, profile, projects } from "./portfolio";
+import { experience, profile, projects, tools } from "./portfolio";
 export const suggestions = [
   "What did Chetana build at Tesla?",
   "Tell me about her data platform experience.",
@@ -15,8 +15,23 @@ export function localAnswer(question: string): string {
   );
   if (project)
     return `${project.name}: ${project.description}\n\nArchitecture: ${project.architecture.join(" → ")}.\n\n${project.decisions[0]} ${project.note}\n\nSource: ${project.repo}`;
+  const tool = [...tools]
+    .sort((a, b) => b.name.length - a.name.length)
+    .find((item) => {
+      const names = [item.name.toLowerCase(), item.id];
+      return names.some((name) => {
+        const start = q.indexOf(name);
+        return (
+          start >= 0 &&
+          !/[a-z0-9]/.test(q[start - 1] || "") &&
+          !/[a-z0-9]/.test(q[start + name.length] || "")
+        );
+      });
+    });
+  if (tool)
+    return `${tool.name}: ${tool.summary}\n\n${tool.proof.map((item) => `${item.kind} — ${item.title}: ${item.detail}`).join("\n\n")}`;
   if (/agent|mcp|adk|ai project|rag/.test(q))
-    return "RouteMind AI is the clearest public example: LangGraph orchestration, PydanticAI typed extraction, hybrid Chroma/BM25 retrieval, and a deterministic route optimizer. The routing demo uses synthetic freight data. MCP and ADK are additional focus areas for tool integration and agent workflows. Gita Guru also demonstrates Claude-powered multilingual learning. Explore the case studies for source links.";
+    return "RouteMind AI is the clearest public example: LangGraph orchestration, PydanticAI typed extraction, hybrid Chroma/BM25 retrieval, and a deterministic route optimizer. The routing demo uses synthetic freight data. MCP also supports the Tesla integration work; Google ADK is an exploration focus. Gita Guru also demonstrates Claude-powered multilingual learning. Explore the case studies for source links.";
   if (/contact|email|linkedin|github|resume|résumé/.test(q))
     return `Contact Chetana at ${profile.email}. LinkedIn: ${profile.linkedin}. GitHub: ${profile.github}. Download the résumé from the Resume button. `;
   if (/education|university|degree|gmu|student/.test(q))
