@@ -735,7 +735,9 @@ export default function Portfolio() {
               c<span>p</span>
               <i />
             </span>
-            <span>chetana.</span>
+            <span>
+              Chetana Patel<span className="brand-dot">.</span>
+            </span>
           </a>
           <span>Chetana Patel · Northern Virginia</span>
           <span>
