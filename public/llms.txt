@@ -1,0 +1,128 @@
+# Chetana Kamraj Patel
+> Software & Applied AI Engineer. 8+ years scaling mission-critical financial infrastructure at Bank of America, now building reliable AI agents and factory software.
+
+Website: https://chetsp.github.io/chetanapatel.github.io/
+GitHub: https://github.com/chetsp
+LinkedIn: https://www.linkedin.com/in/cschetanapatel/
+
+## Hiring relevance
+- **Applied AI & Agents:** Tesla’s Carrier Rate Creation assistant, RouteMind AI, MCP/LangGraph, and machine learning study.
+- **Backend & Distributed Systems:** 55M+ daily calculations, Go/Python scheduling, Kafka event streams, and $800K annual savings.
+
+## Career and education
+
+### Software Engineering Intern — Tesla (Summer 2026)
+Factory Software Team
+Manufacturing infrastructure and Carrier Rate Creation workflows.
+- Built manufacturing infrastructure workflows, connecting factory software requirements with operational processes.
+- Designed a conversational AI assistant for Carrier Rate Creation, with structured validation of required inputs before changes could proceed.
+- Included human-in-the-loop safeguards so users could review proposed actions and resolve incomplete requests.
+Details: https://chetsp.github.io/chetanapatel.github.io/#tesla
+
+### M.S. in Computer Science — George Mason University (2026)
+Machine Learning Concentration
+Graduate coursework and research focus in machine learning, distributed systems, and agentic AI workflows.
+- Study machine learning methods and distributed systems, with a focus on applying them to reliable agentic workflows.
+- Explore Model Context Protocol, retrieval, and tool integration in applied AI systems.
+- As a Graduate Teaching Assistant, mentor 40+ students in graph algorithms, probability, complexity analysis, and structured problem-solving.
+Details: https://chetsp.github.io/chetanapatel.github.io/#george-mason
+
+### Senior Software Engineer — Bank of America (2022 — 2025)
+Asset Valuation & Data Platforms
+Built backend processing and event-driven services for financial calculations and margin workflows.
+- Automated 55M+ daily calculations through a distributed processing framework on Linux clusters. Caching and concurrency reduced latency by two-thirds.
+- Built a distributed task scheduler with Go workers and Python orchestration and monitoring, delivering 52% higher task throughput and fault-tolerant execution across services.
+- Replaced legacy messaging with Kafka event streams and REST APIs, improving performance by 85% and generating $800K annual infrastructure savings.
+- Redesigned Margin Call Processing with event-driven microservices handling 10M+ financial contract calculations per day, delivering margin calls 6 hours sooner and removing 10 hours of daily manual review.
+- Integrated Docker-based CI/CD with AWS and GCP deployments, accelerating releases by 40% and reducing manual intervention by 50%.
+Details: https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+
+### Software Engineer — Bank of America (2017 — 2022)
+Backend Services & Developer Infrastructure
+Developed concurrent processing, API testing, and production monitoring tools.
+- Built a concurrent Python interpreter processing 1M+ call logs in under 10 seconds, reducing manual effort by 72%.
+- Developed a multiprocessing API load-testing framework for 3,000+ calls, saving approximately 450 engineering hours.
+- Built Java and Grafana monitoring dashboards to track transactions and system health, reducing downtime by 70%.
+Details: https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-engineer
+
+## Education
+- M.S. in Computer Science (Machine Learning) — George Mason University, 2026. Graduate study.
+- BTech in Computer Engineering — Veermata Jijabai Technological Institute, 2017. Completed.
+
+## Key outcomes
+- 55M+ daily calculations automated. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+- 52% higher task throughput. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+- $800K annual infrastructure savings. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+- 3 open-source case studies. https://chetsp.github.io/chetanapatel.github.io/#work
+
+## Selected open-source projects
+
+### RouteMind AI
+Shipment planning with LangGraph, PydanticAI, FastAPI, and Chroma. Validates multi-leg routing constraints and asks for missing parameters before generating a plan.
+Stack: LangGraph, PydanticAI, FastAPI, Chroma, PostgreSQL.
+Architecture: Shipment request → Typed extraction → LangGraph orchestration → Hybrid evidence retrieval → Deterministic optimizer → Verified plan + citations.
+Scope: Uses synthetic carriers, schedules, and prices. Supports planning and comparison; does not book shipments or return live freight quotes.
+Case study: https://chetsp.github.io/chetanapatel.github.io/work/routemind-ai/
+Repository: https://github.com/chetsp/RouteMind-AI
+
+### Gita Guru
+A multilingual learning web app using Claude and JavaScript for explanations across 26+ languages, with browser-native audio narration through the Web Speech API.
+Stack: JavaScript, Claude, Web Speech API, HTML / CSS.
+Architecture: Chapter + verse selection → Claude explanations → Translated story panels → Web Speech narration → Session progress.
+Scope: The browser uses speech synthesis for narration and sessionStorage for progress. Public hosting requires a server-side proxy for provider credentials.
+Case study: https://chetsp.github.io/chetanapatel.github.io/work/gita-guru/
+Repository: https://github.com/chetsp/Gita-Guru
+
+### Survey Application Modernization
+Converted a static Figma design system into a full-CRUD application using React, TypeScript, Tailwind, and FastAPI, including form validation and persistent storage.
+Stack: React, TypeScript, Tailwind, FastAPI, SQLite.
+Architecture: Figma Make design → React + Tailwind → Form validation → FastAPI endpoints → SQLModel + SQLite.
+Scope: University project covering design-system implementation, client-side validation, routing, and CRUD integration.
+Case study: https://chetsp.github.io/chetanapatel.github.io/work/ai-modernization/
+Repository: https://github.com/chetsp/AI-Modernization
+
+## Tools, skills, and implementation context
+- **Codex** (Developer tooling): AI-assisted software development and code review.
+- **Gemini** (Open Source): Typed language extraction for shipment requirements. Case study: RouteMind AI. https://chetsp.github.io/chetanapatel.github.io/work/routemind-ai
+- **Claude** (Open Source): Multilingual explanations and learning activities. Case study: Gita Guru. https://chetsp.github.io/chetanapatel.github.io/work/gita-guru
+- **LangGraph** (Open Source): Persistent orchestration across clarification and planning. Case study: RouteMind AI. https://chetsp.github.io/chetanapatel.github.io/work/routemind-ai
+- **PydanticAI** (Open Source): Typed extraction with validated model outputs. Case study: RouteMind AI. https://chetsp.github.io/chetanapatel.github.io/work/routemind-ai
+- **MCP** (Tesla): Tool boundaries for enterprise integrations. Experience: Tesla · Factory Software Team. https://chetsp.github.io/chetanapatel.github.io/#tesla
+- **Google ADK** (Exploration): Evaluating Google ADK for tool-based agent orchestration. Exploration: Agent orchestration research. https://chetsp.github.io/chetanapatel.github.io/work/routemind-ai
+- **RAG** (Open Source): Retrieve carrier evidence before explaining a plan. Case study: RouteMind AI. https://chetsp.github.io/chetanapatel.github.io/work/routemind-ai
+- **Evals** (Open Source): Check extraction, retrieval, and constraint behavior. Case study: RouteMind AI. https://chetsp.github.io/chetanapatel.github.io/work/routemind-ai
+- **Python** (BofA · Production): Distributed orchestration, processing, and API services. Experience: Bank of America · Senior Software Engineer. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+- **Go** (BofA · Production): Concurrent workers for distributed task execution. Experience: Bank of America · Senior Software Engineer. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+- **Java** (BofA · Production): Transaction monitoring and backend engineering. Experience: Bank of America · Software Engineer. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-engineer
+- **Kafka** (BofA · Production): Event streams for financial calculation workflows. Experience: Bank of America · Senior Software Engineer. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+- **Distributed Scheduling** (BofA · Production): Queue work, coordinate workers, and handle failures. Experience: Bank of America · Senior Software Engineer. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+- **C/C++** (Engineering toolkit): Systems programming and concurrency foundations. Experience: Engineering foundations. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-engineer
+- **TypeScript** (Open Source): Typed interfaces and component contracts. Case study: Survey Application Modernization. https://chetsp.github.io/chetanapatel.github.io/work/ai-modernization
+- **React** (Open Source): Interactive form flows and reusable UI components. Case study: Survey Application Modernization. https://chetsp.github.io/chetanapatel.github.io/work/ai-modernization
+- **Next.js** (Portfolio): App Router pages, metadata, and static case studies. Portfolio: This portfolio. https://chetsp.github.io/chetanapatel.github.io/#home
+- **FastAPI** (Open Source): Validated REST services for application workflows. Case study: RouteMind AI. https://chetsp.github.io/chetanapatel.github.io/work/routemind-ai
+- **Node.js** (Portfolio): Next.js runtime and application tooling. Portfolio: This portfolio. https://chetsp.github.io/chetanapatel.github.io/#home
+- **Tailwind CSS** (Open Source): Shared styling and responsive interface implementation. Case study: Survey Application Modernization. https://chetsp.github.io/chetanapatel.github.io/work/ai-modernization
+- **Spring Boot** (Study & comparison): Comparing backend implementation patterns. Exploration: Backend framework comparison. https://chetsp.github.io/chetanapatel.github.io/work/ai-modernization
+- **AWS** (BofA · Production): Cloud deployments with container-based delivery. Experience: Bank of America · Senior Software Engineer. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+- **GCP** (BofA · Production): Cloud application delivery and infrastructure. Experience: Bank of America · Senior Software Engineer. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+- **Docker** (BofA · Production): Reproducible application and service packaging. Experience: Bank of America · Senior Software Engineer. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+- **Kubernetes** (Academic deployment): Container orchestration with declared services. Repository: Kubernetes survey deployment. https://github.com/chetsp/Full-Stack-Student-Survey-Application
+- **Helm** (Academic deployment): Repeatable Kubernetes deployment configuration. Repository: Kubernetes survey deployment. https://github.com/chetsp/Full-Stack-Student-Survey-Application
+- **PostgreSQL** (Open Source): Durable relational storage for planning data. Case study: RouteMind AI. https://chetsp.github.io/chetanapatel.github.io/work/routemind-ai
+- **MySQL** (Academic deployment): Persistent relational storage behind CRUD APIs. Repository: Kubernetes survey deployment. https://github.com/chetsp/Full-Stack-Student-Survey-Application
+- **OpenTelemetry** (Exploration): Exploring traces, metrics, and telemetry conventions. Exploration: Observability focus. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-engineer
+- **Grafana** (BofA · Production): Operational dashboards for transactions and health. Experience: Bank of America · Software Engineer. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-engineer
+- **SQL** (Tesla · Data): Structured queries and durable application data. Experience: Tesla · Logistics AI. https://chetsp.github.io/chetanapatel.github.io/#tesla
+- **CI/CD** (BofA · Production): Automated build and release workflows. Experience: Bank of America · Senior Software Engineer. https://chetsp.github.io/chetanapatel.github.io/#bank-of-america-senior
+
+## Contact and résumé
+- Email: mailto:patelkchetana@gmail.com
+- Résumé PDF: https://chetsp.github.io/chetanapatel.github.io/Chetana_Patel_Resume.pdf
+- GitHub: https://github.com/chetsp
+- LinkedIn: https://www.linkedin.com/in/cschetanapatel/
+
+## Scope notes
+- Professional roles and metrics are maintained in the portfolio data. RouteMind uses synthetic freight data and does not book shipments or provide live quotes.
+- Exploration badges describe current learning; they do not imply production deployment.
+- The contact section provides direct email and social links. There is no contact form.

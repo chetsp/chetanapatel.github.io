@@ -4,14 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
-    "build": "next build",
+    "build": "npm run generate:profile && next build",
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "test:smoke": "node tests/smoke.cjs",
     "format": "prettier --write src tests README.md",
     "lint": "eslint src next.config.ts --max-warnings=0",
     "test:themes": "node tests/themes.cjs",
-    "test:capabilities": "node tests/capabilities.cjs"
+    "test:capabilities": "node tests/capabilities.cjs",
+    "generate:profile": "node scripts/generate-llms.cjs",
+    "test:relevance": "node tests/relevance.cjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.0",

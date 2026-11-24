@@ -23,10 +23,7 @@ const base = (process.env.BASE_URL || "http://127.0.0.1:3000").replace(
       await page.getByRole("button", { name: "Toggle color theme" }).click();
     assert.equal(await page.locator(".capability-card").count(), 4);
     assert.equal(await page.locator(".tool-tile").count(), 33);
-    assert.equal(
-      await page.locator("#skills-proof,.tool-experience").count(),
-      0,
-    );
+    assert.equal(await page.locator("#skills-proof").count(), 1);
     assert.equal(
       await page.locator(".tool-tile").filter({ hasText: "Codex" }).count(),
       1,
@@ -67,7 +64,7 @@ const base = (process.env.BASE_URL || "http://127.0.0.1:3000").replace(
     }
     await page.getByRole("button", { name: /All tools/ }).click();
     await page.locator(".tool-tile").filter({ hasText: "Codex" }).hover();
-    assert.equal(await page.locator("#skills-proof").count(), 0);
+    assert.equal(await page.locator("#skills-proof").count(), 1);
     for (const width of [1440, 390, 320]) {
       await page.setViewportSize({ width, height: 1000 });
       assert(
@@ -82,7 +79,7 @@ const base = (process.env.BASE_URL || "http://127.0.0.1:3000").replace(
           .screenshot({ path: `/tmp/skills-color-${theme}.png` });
     }
     console.log(
-      `PASS ${theme}: 33 tools, Codex/Gemini, original colors, no usage details, capability filters, local assets and responsive layout`,
+      `PASS ${theme}: 33 tools, Codex/Gemini, original colors, visible proof, capability filters, local assets and responsive layout`,
     );
   }
   assert.deepEqual(errors, []);

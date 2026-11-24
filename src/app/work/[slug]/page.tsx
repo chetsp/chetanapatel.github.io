@@ -13,7 +13,12 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const p = projects.find((p) => p.slug === slug);
-  return { title: p ? `${p.name} — Chetana Patel` : "Project not found" };
+  return {
+    title: p ? `${p.name} — Chetana Patel` : "Project not found",
+    alternates: p
+      ? { canonical: `${profile.website}/work/${p.slug}/` }
+      : undefined,
+  };
 }
 export default async function CaseStudy({
   params,

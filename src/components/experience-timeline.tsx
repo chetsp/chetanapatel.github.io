@@ -22,6 +22,7 @@ export default function ExperienceTimeline() {
       {experience.map((entry) => (
         <article
           className={`experience-card panel ${entry.id === "bank-of-america-senior" ? "featured-experience" : ""}`}
+          data-relevance={entry.relevance.join(" ")}
           id={entry.id}
           key={entry.id}
           aria-labelledby={`${entry.id}-title`}
@@ -48,7 +49,7 @@ export default function ExperienceTimeline() {
           <p className="role-summary">{entry.summary}</p>
           <ul>
             {entry.bullets.map((bullet) => (
-              <li key={bullet}>
+              <li key={bullet} data-relevance={entry.relevance.join(" ")}>
                 <ArrowUpRight size={12} />
                 <span>
                   <ImpactText text={bullet} />

@@ -16,12 +16,19 @@ import {
   Linkedin,
   Menu,
   MessageSquare,
-  Network,
   Sparkles,
   X,
 } from "lucide-react";
-import { categories, Category, profile, projects } from "@/data/portfolio";
+import {
+  categories,
+  Category,
+  profile,
+  projects,
+  heroMetrics,
+  HiringLens,
+} from "@/data/portfolio";
 import Assistant from "./assistant";
+import HiringLenses from "./hiring-lenses";
 import ThemeToggle from "./theme-toggle";
 import ExperienceTimeline from "./experience-timeline";
 import ExperienceLogos from "./experience-logos";
@@ -59,7 +66,7 @@ function Reveal({
   return (
     <motion.div
       className={`reveal ${className}`}
-      initial={{ opacity: 0, y: 20 }}
+      initial={false}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.08 }}
       transition={{ duration: 0.5 }}
@@ -70,6 +77,7 @@ function Reveal({
 }
 export default function Portfolio() {
   const [menu, setMenu] = useState(false);
+  const [lens, setLens] = useState<HiringLens>("all");
   const [filter, setFilter] = useState<Category>("All work");
   const [copied, setCopied] = useState(false);
   const [drawer, setDrawer] = useState(false);
@@ -131,17 +139,9 @@ export default function Portfolio() {
       setCopyError("Copy unavailable. Email: " + profile.email);
     }
   }
-  function chooseCategory(category: Category) {
-    setFilter(category);
-    document.getElementById("work")?.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-        ? "instant"
-        : "smooth",
-    });
-  }
   return (
     <MotionConfig reducedMotion="user">
-      <div className="site">
+      <div className="site" data-hiring-lens={lens}>
         <header className="nav-shell">
           <nav className="navbar" aria-label="Main navigation">
             <a href="#" className="brand">
@@ -204,6 +204,7 @@ export default function Portfolio() {
               <p className="hero-intro">HELLO, I’M CHETANA KAMRAJ PATEL</p>
               <h1>{profile.title}</h1>
               <p className="hero-description">{profile.tagline}</p>
+              <HiringLenses value={lens} onChange={setLens} />
               <div className="hero-buttons">
                 <a href="#work" className="button primary">
                   Explore my work <ArrowUpRight size={16} />
@@ -211,28 +212,6 @@ export default function Portfolio() {
                 <a href={profile.resume} className="button secondary" download>
                   <ArrowDownToLine size={15} /> Download résumé
                 </a>
-              </div>
-              <div className="pillar-links">
-                {(
-                  [
-                    "Agents & MCP",
-                    "Product Engineering",
-                    "Applied AI",
-                  ] as Category[]
-                ).map((p, i) => (
-                  <button onClick={() => chooseCategory(p)} key={p}>
-                    {i === 0 ? (
-                      <Sparkles size={12} />
-                    ) : i === 1 ? (
-                      <Database size={12} />
-                    ) : i === 2 ? (
-                      <Network size={12} />
-                    ) : (
-                      <Code2 size={12} />
-                    )}{" "}
-                    {p}
-                  </button>
-                ))}
               </div>
             </div>
             <div
@@ -279,33 +258,13 @@ export default function Portfolio() {
               </div>
             </div>
             <div className="metrics">
-              {[
-                {
-                  value: "55M+",
-                  label: "Daily calculations automated",
-                  note: "BANK OF AMERICA",
-                  target: "bank-of-america-senior",
-                },
-                {
-                  value: "52%",
-                  label: "Higher task throughput",
-                  note: "DISTRIBUTED SYSTEMS",
-                  target: "bank-of-america-senior",
-                },
-                {
-                  value: "$800K",
-                  label: "Annual infrastructure savings",
-                  note: "PLATFORM MODERNIZATION",
-                  target: "bank-of-america-senior",
-                },
-                {
-                  value: String(projects.length),
-                  label: "Open-source case studies",
-                  note: "EXPLORE THE CODE",
-                  target: "work",
-                },
-              ].map((m) => (
-                <a href={`#${m.target}`} className="metric" key={m.value}>
+              {heroMetrics.map((m) => (
+                <a
+                  href={`#${m.target}`}
+                  className="metric"
+                  key={m.id}
+                  data-relevance={m.relevance.join(" ")}
+                >
                   <div>
                     <strong>{m.value}</strong>
                     <ArrowUpRight size={16} />
@@ -389,6 +348,14 @@ export default function Portfolio() {
               />
             </Reveal>
             <ExperienceTimeline />
+            <div className="section-actions">
+              <a href={profile.resume} download>
+                Download résumé <ArrowDownToLine size={14} />
+              </a>
+              <a href="#assistant">
+                Ask about my experience <ArrowUpRight size={14} />
+              </a>
+            </div>
           </section>
           <section id="work" className="section wrap">
             <Reveal>
@@ -431,12 +398,13 @@ export default function Portfolio() {
                   .map((p) => (
                     <motion.article
                       layout
-                      initial={{ opacity: 0, y: 12 }}
+                      initial={false}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.97 }}
                       transition={{ duration: 0.25 }}
                       className={`project-card panel ${p.color}`}
                       key={p.slug}
+                      data-relevance={p.relevance.join(" ")}
                     >
                       <Link
                         href={`/work/${p.slug}`}
@@ -592,7 +560,7 @@ export default function Portfolio() {
                 </button>
               </div>
               <span className="copy-status" role="status">
-                {copied ? "Email copied to clipboard." : copyError}
+                {copied ? "Copied!" : copyError}
               </span>
               <div className="social-links">
                 <a href={profile.github} target="_blank" rel="noreferrer">

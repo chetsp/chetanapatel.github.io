@@ -142,8 +142,8 @@ const staticSite = process.env.STATIC_SITE === "true";
   assert.equal(await page.locator("#skills .tool-tile").count(), 33);
   for (const badge of await page.locator("#skills .tool-tile").all())
     assert(await badge.isVisible());
-  assert.equal(await page.locator("#skills-proof").count(), 0);
-  assert.equal(await page.locator("#skills .tool-experience").count(), 0);
+  assert.equal(await page.locator("#skills-proof").count(), 1);
+  assert.equal(await page.locator("#skills .tool-experience").count(), 33);
   assert.equal(
     await page
       .locator("#skills .tool-tile")
@@ -183,7 +183,7 @@ const staticSite = process.env.STATIC_SITE === "true";
   const resumePath =
     new URL(base).pathname.replace(/\/$/, "") + "/Chetana_Patel_Resume.pdf";
   const resumeLinks = page.locator(`a[href="${resumePath}"]`);
-  assert.equal(await resumeLinks.count(), 4);
+  assert.equal(await resumeLinks.count(), 5);
   for (const link of await resumeLinks.all())
     assert.equal(await link.getAttribute("download"), "");
   const downloadPromise = page.waitForEvent("download");

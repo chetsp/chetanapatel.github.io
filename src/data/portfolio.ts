@@ -1,6 +1,8 @@
+export type HiringLens = "all" | "ai" | "backend";
 export type Category =
   "All work" | "Agents & MCP" | "Product Engineering" | "Applied AI";
 export type Project = {
+  relevance: HiringLens[];
   slug: string;
   name: string;
   kicker: string;
@@ -18,17 +20,64 @@ export type Project = {
   note: string;
 };
 export const profile = {
+  website: "https://chetsp.github.io/chetanapatel.github.io",
   name: "Chetana Kamraj Patel",
   shortName: "Chetana Patel",
   title: "Software & Applied AI Engineer",
   tagline:
-    "8+ years scaling mission-critical financial platforms at Bank of America, now building production AI agents and factory software.",
+    "8+ years scaling mission-critical financial infrastructure at Bank of America, now building reliable AI agents and factory software.",
   location: "Northern Virginia / Washington, D.C.",
   email: "patelkchetana@gmail.com",
   github: "https://github.com/chetsp",
   linkedin: "https://www.linkedin.com/in/cschetanapatel/",
   resume: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/Chetana_Patel_Resume.pdf`,
 };
+export const hiringLenses: {
+  id: HiringLens;
+  label: string;
+  description: string;
+}[] = [
+  {
+    id: "all",
+    label: "All Experience",
+    description: "Browse all roles, projects, and technical capabilities.",
+  },
+  {
+    id: "ai",
+    label: "Applied AI & Agents",
+    description:
+      "Focus: Tesla’s Carrier Rate Creation assistant, RouteMind AI, MCP/LangGraph, and machine learning study.",
+  },
+  {
+    id: "backend",
+    label: "Backend & Distributed Systems",
+    description:
+      "Focus: 55M+ daily calculations, Go/Python scheduling, Kafka event streams, and $800K annual savings.",
+  },
+];
+export const recruiterQuestions = [
+  "What did Chetana build at Tesla?",
+  "How did she achieve $800K savings at BofA?",
+  "Walk through RouteMind AI's architecture",
+];
+export const education = [
+  {
+    institution: "George Mason University",
+    degree: "M.S. in Computer Science",
+    concentration: "Machine Learning",
+    year: "2026",
+    status: "Graduate study",
+    url: "https://www.gmu.edu/",
+  },
+  {
+    institution: "Veermata Jijabai Technological Institute",
+    degree: "BTech in Computer Engineering",
+    concentration: "",
+    year: "2017",
+    status: "Completed",
+    url: "https://vjti.ac.in/",
+  },
+];
 export const categories: Category[] = [
   "All work",
   "Agents & MCP",
@@ -37,6 +86,7 @@ export const categories: Category[] = [
 ];
 export const projects: Project[] = [
   {
+    relevance: ["ai", "backend"],
     slug: "routemind-ai",
     name: "RouteMind AI",
     kicker: "CONVERSATIONAL LOGISTICS",
@@ -72,6 +122,7 @@ export const projects: Project[] = [
     note: "Uses synthetic carriers, schedules, and prices. Supports planning and comparison; does not book shipments or return live freight quotes.",
   },
   {
+    relevance: ["ai"],
     slug: "gita-guru",
     name: "Gita Guru",
     kicker: "APPLIED AI · ACCESSIBLE LEARNING",
@@ -105,6 +156,7 @@ export const projects: Project[] = [
     note: "The browser uses speech synthesis for narration and sessionStorage for progress. Public hosting requires a server-side proxy for provider credentials.",
   },
   {
+    relevance: ["backend"],
     slug: "ai-modernization",
     name: "Survey Application Modernization",
     kicker: "INTERFACE MODERNIZATION",
@@ -138,8 +190,50 @@ export const projects: Project[] = [
     note: "University project covering design-system implementation, client-side validation, routing, and CRUD integration.",
   },
 ];
+export const heroMetrics: {
+  id: string;
+  value: string;
+  label: string;
+  note: string;
+  target: string;
+  relevance: HiringLens[];
+}[] = [
+  {
+    id: "calculations",
+    value: "55M+",
+    label: "Daily calculations automated",
+    note: "BANK OF AMERICA",
+    target: "bank-of-america-senior",
+    relevance: ["backend"],
+  },
+  {
+    id: "throughput",
+    value: "52%",
+    label: "Higher task throughput",
+    note: "DISTRIBUTED SYSTEMS",
+    target: "bank-of-america-senior",
+    relevance: ["backend"],
+  },
+  {
+    id: "savings",
+    value: "$800K",
+    label: "Annual infrastructure savings",
+    note: "PLATFORM MODERNIZATION",
+    target: "bank-of-america-senior",
+    relevance: ["backend"],
+  },
+  {
+    id: "projects",
+    value: String(projects.length),
+    label: "Open-source case studies",
+    note: "EXPLORE THE CODE",
+    target: "work",
+    relevance: ["ai", "backend"],
+  },
+];
 export const experience = [
   {
+    relevance: ["ai"] as HiringLens[],
     id: "tesla",
     company: "Tesla",
     role: "Software Engineering Intern",
@@ -156,6 +250,7 @@ export const experience = [
     logo: "tesla",
   },
   {
+    relevance: ["ai"] as HiringLens[],
     id: "george-mason",
     company: "George Mason University",
     role: "M.S. in Computer Science",
@@ -172,6 +267,7 @@ export const experience = [
     logo: "george-mason",
   },
   {
+    relevance: ["backend"] as HiringLens[],
     id: "bank-of-america-senior",
     company: "Bank of America",
     role: "Senior Software Engineer",
@@ -190,6 +286,7 @@ export const experience = [
     logo: "bank-of-america",
   },
   {
+    relevance: ["backend"] as HiringLens[],
     id: "bank-of-america-engineer",
     company: "Bank of America",
     role: "Software Engineer",
@@ -246,7 +343,7 @@ export const tools: Tool[] = [
     id: "gemini",
     name: "Gemini",
     pillar: "agents",
-    badge: "Agent Stack",
+    badge: "Open Source",
     summary: "Typed language extraction for shipment requirements.",
     proof: [
       {
@@ -264,7 +361,7 @@ export const tools: Tool[] = [
     id: "claude",
     name: "Claude",
     pillar: "agents",
-    badge: "Project · Gita Guru",
+    badge: "Open Source",
     summary: "Multilingual explanations and learning activities.",
     proof: [
       {
@@ -282,7 +379,7 @@ export const tools: Tool[] = [
     id: "langgraph",
     name: "LangGraph",
     pillar: "agents",
-    badge: "Agent Stack",
+    badge: "Open Source",
     summary: "Persistent orchestration across clarification and planning.",
     proof: [
       {
@@ -300,7 +397,7 @@ export const tools: Tool[] = [
     id: "pydanticai",
     name: "PydanticAI",
     pillar: "agents",
-    badge: "Agent Stack",
+    badge: "Open Source",
     summary: "Typed extraction with validated model outputs.",
     proof: [
       {
@@ -354,7 +451,7 @@ export const tools: Tool[] = [
     id: "rag",
     name: "RAG",
     pillar: "agents",
-    badge: "Agent Stack",
+    badge: "Open Source",
     summary: "Retrieve carrier evidence before explaining a plan.",
     proof: [
       {
@@ -372,7 +469,7 @@ export const tools: Tool[] = [
     id: "evals",
     name: "Evals",
     pillar: "agents",
-    badge: "Agent Stack",
+    badge: "Open Source",
     summary: "Check extraction, retrieval, and constraint behavior.",
     proof: [
       {
@@ -390,7 +487,7 @@ export const tools: Tool[] = [
     id: "python",
     name: "Python",
     pillar: "systems",
-    badge: "Production · BofA",
+    badge: "BofA · Production",
     summary: "Distributed orchestration, processing, and API services.",
     proof: [
       {
@@ -416,7 +513,7 @@ export const tools: Tool[] = [
     id: "go",
     name: "Go",
     pillar: "systems",
-    badge: "Production · BofA",
+    badge: "BofA · Production",
     summary: "Concurrent workers for distributed task execution.",
     proof: [
       {
@@ -434,7 +531,7 @@ export const tools: Tool[] = [
     id: "java",
     name: "Java",
     pillar: "systems",
-    badge: "Production · BofA",
+    badge: "BofA · Production",
     summary: "Transaction monitoring and backend engineering.",
     proof: [
       {
@@ -452,7 +549,7 @@ export const tools: Tool[] = [
     id: "kafka",
     name: "Kafka",
     pillar: "systems",
-    badge: "Production · BofA",
+    badge: "BofA · Production",
     summary: "Event streams for financial calculation workflows.",
     proof: [
       {
@@ -470,7 +567,7 @@ export const tools: Tool[] = [
     id: "scheduling",
     name: "Distributed Scheduling",
     pillar: "systems",
-    badge: "Production · BofA",
+    badge: "BofA · Production",
     summary: "Queue work, coordinate workers, and handle failures.",
     proof: [
       {
@@ -506,7 +603,7 @@ export const tools: Tool[] = [
     id: "typescript",
     name: "TypeScript",
     pillar: "product",
-    badge: "Product Engineering",
+    badge: "Open Source",
     summary: "Typed interfaces and component contracts.",
     proof: [
       {
@@ -532,7 +629,7 @@ export const tools: Tool[] = [
     id: "react",
     name: "React",
     pillar: "product",
-    badge: "Product Engineering",
+    badge: "Open Source",
     summary: "Interactive form flows and reusable UI components.",
     proof: [
       {
@@ -568,7 +665,7 @@ export const tools: Tool[] = [
     id: "fastapi",
     name: "FastAPI",
     pillar: "product",
-    badge: "Agent Stack",
+    badge: "Open Source",
     summary: "Validated REST services for application workflows.",
     proof: [
       {
@@ -612,7 +709,7 @@ export const tools: Tool[] = [
     id: "tailwind",
     name: "Tailwind CSS",
     pillar: "product",
-    badge: "Product Engineering",
+    badge: "Open Source",
     summary: "Shared styling and responsive interface implementation.",
     proof: [
       {
@@ -648,7 +745,7 @@ export const tools: Tool[] = [
     id: "aws",
     name: "AWS",
     pillar: "cloud",
-    badge: "Production · BofA",
+    badge: "BofA · Production",
     summary: "Cloud deployments with container-based delivery.",
     proof: [
       {
@@ -666,7 +763,7 @@ export const tools: Tool[] = [
     id: "gcp",
     name: "GCP",
     pillar: "cloud",
-    badge: "Production · BofA",
+    badge: "BofA · Production",
     summary: "Cloud application delivery and infrastructure.",
     proof: [
       {
@@ -684,7 +781,7 @@ export const tools: Tool[] = [
     id: "docker",
     name: "Docker",
     pillar: "cloud",
-    badge: "Production · BofA",
+    badge: "BofA · Production",
     summary: "Reproducible application and service packaging.",
     proof: [
       {
@@ -745,7 +842,7 @@ export const tools: Tool[] = [
     id: "postgresql",
     name: "PostgreSQL",
     pillar: "cloud",
-    badge: "Project · RouteMind",
+    badge: "Open Source",
     summary: "Durable relational storage for planning data.",
     proof: [
       {
@@ -799,7 +896,7 @@ export const tools: Tool[] = [
     id: "grafana",
     name: "Grafana",
     pillar: "cloud",
-    badge: "Production · BofA",
+    badge: "BofA · Production",
     summary: "Operational dashboards for transactions and health.",
     proof: [
       {
@@ -843,7 +940,7 @@ export const tools: Tool[] = [
     id: "cicd",
     name: "CI/CD",
     pillar: "cloud",
-    badge: "Production · BofA",
+    badge: "BofA · Production",
     summary: "Automated build and release workflows.",
     proof: [
       {
@@ -887,7 +984,7 @@ export const capabilities: Capability[] = [
   },
   {
     id: "systems",
-    title: "High-Throughput Distributed Systems",
+    title: "Distributed Systems & Data",
     label: "02 / PROCESSING AT SCALE",
     description:
       "Concurrent workers, scheduling, and event streams for financial processing.",
@@ -896,7 +993,7 @@ export const capabilities: Capability[] = [
   },
   {
     id: "product",
-    title: "Full-Stack & Product Engineering",
+    title: "Full-Stack Engineering",
     label: "03 / APPLICATION DELIVERY",
     description:
       "Typed interfaces connected to validated APIs and persistent application state.",
@@ -913,7 +1010,7 @@ export const capabilities: Capability[] = [
   },
   {
     id: "cloud",
-    title: "Cloud, Data & Observability",
+    title: "Cloud & Observability",
     label: "04 / OPERATIONS & DATA",
     description:
       "Container packaging, relational storage, orchestration, and monitoring.",
@@ -961,12 +1058,16 @@ export const skillGroups = capabilities.map((capability) => ({
 }));
 export const knowledgeBase = {
   profile,
+  education,
   experience,
   projects,
   skillGroups,
   tools,
   capabilities,
   engineeringPrinciples,
+  hiringLenses,
+  heroMetrics,
+  recruiterQuestions,
   sourceNote:
     "Professional background and metrics provided by Chetana. Project architecture and scope are maintained with the linked repositories.",
 };

@@ -4,7 +4,7 @@ A dark, responsive developer portfolio built with Next.js App Router, TypeScript
 
 ## Develop
 
-Requires Node.js 20.9+ (validated with Node 24).
+Requires Node.js 24+ for the native TypeScript-backed profile generator and build.
 
 ```sh
 npm ci
@@ -89,10 +89,20 @@ All component colors use the dark `:root` and light `:root.light` tokens in `src
 
 With the app running, execute `npm run test:themes` (with `BASE_URL` and optionally `CHROMIUM_PATH` as described above). Tests check both themes across four screen sizes, all case studies, the chat drawer, text/surface contrast, persistence, keyboard activation, and a saved light theme with hydration bundles blocked.
 
-## Tools, Skills & Capabilities
+## Relevance, Action & Trust
 
-`src/data/portfolio.ts` owns the four capability pillars and 33 tools/practices. `src/components/capabilities.tsx` renders the architecture cards and names/icons-only grid. Capability cards filter the grid; there are no usage badges, proof drawers, or tool-selection interactions.
+The hero offers All Experience (default), Applied AI & Agents, and Backend & Distributed Systems hiring lenses. Lenses highlight relevant metrics, roles/bullets, projects, and capabilities without filtering page content. Four architecture cards and 33 local technology/practice tiles remain available, with Python evidence selected on the initial render. Production, project, academic, and exploration contexts are kept distinct.
 
-Original-color technology SVGs are local in `public/tools/`, with source details in `public/tools/SOURCES.md`. White icon surfaces keep both full-color and monochrome brand marks visible in dark and light themes. Codex and Gemini each appear once. Internal tool context remains available to the portfolio assistant.
+`src/data/portfolio.ts` contains the profile, education, experience, hiring lenses, metrics, project case studies, tool badges/proof links, and recruiter questions. The assistant reads these records rather than maintaining separate career claims. Direct résumé downloads, copy-email feedback, GitHub, and LinkedIn remain the primary actions; there is no contact form.
 
-Run `npm run test:capabilities` with `BASE_URL` and optionally `CHROMIUM_PATH`. It checks the tool count, filters, Codex/Gemini, absence of usage details, unfiltered brand colors, local SVG URLs, footer cleanup, and both themes at desktop/mobile widths.
+## Machine-readable profile
+
+- `src/data/structured-data.ts`: Schema.org Person and ProfilePage graph, roles, academic affiliation, credentials, skills, and social URLs. Past Tesla/BofA roles are occupations with dated descriptions, not claims of current employment.
+- `public/llms.txt`: generated Markdown career/project/skills summary with absolute production URLs.
+- `scripts/generate-llms.cjs`: reads portfolio data using Node 24's native TypeScript support. `npm run generate:profile` refreshes the file; `npm run build` runs it automatically before Next.js.
+- Homepage and case studies have canonical URLs with the repository path. Case study routes are statically generated.
+- Roles, bullets, projects, tools, and default Python proof are present and visible without client JavaScript. Only interaction, chat, theme preference, and optional filtering require JavaScript.
+
+## Validation suites
+
+Run `npm run lint`, `npm run build`, `npm run test:smoke`, `npm run test:themes`, `npm run test:capabilities`, and `npm run test:relevance` against a running app or exported-site preview. Use `BASE_URL`, `CHROMIUM_PATH`, and `STATIC_SITE=true` for the Pages export as described above. The relevance suite covers lens highlights without hiding content, proof links, recruiter assistant prompts, email copying, JSON-LD, llms.txt, canonical URLs, and semantic content with JavaScript disabled.
